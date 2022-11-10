@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import Feed from './feed components/Feed';
 import SearchApps from './SearchApps';
 
