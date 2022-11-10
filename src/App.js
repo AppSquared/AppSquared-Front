@@ -6,7 +6,7 @@ import Home from './components/home-components/Home';
 import FooterBar from './components/static-components/Footer';
 
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
