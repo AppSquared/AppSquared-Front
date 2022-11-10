@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
 
+import {Link} from 'react-router-dom'
 function Navbar({setIsLoggedIn, loggedIn}) {
   // LOGIN / LOGOUT BUTTON
   // TOGGLES DEPENDING ON WHETHER USER IS LOGGED IN
