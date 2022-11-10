@@ -5,9 +5,10 @@ import SearchApps from './SearchApps';
 function Home({loggedIn}) {
   return (
     <div>
-      <h1>Home</h1>
       <SearchApps />
       <hr></hr>
+
+      <h3>Currently Viewing Your Home</h3>
 
       <Feed />
     </div>

@@ -20,7 +20,7 @@ function Feed() {
   ];
   return (
     <div id='feed-main-div'>
-      <h1>Feed</h1>
+      <h3>Feed</h3>
         <hr/>
     {apps.map((app)=>{
       return <FeedItem key={app.title} title={app.title} subject={app.subject}/>
