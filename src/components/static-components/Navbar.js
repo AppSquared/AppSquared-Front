@@ -1,20 +1,25 @@
+import { Link } from 'react-router-dom';
 
-import {Link} from 'react-router-dom'
-function Navbar({setIsLoggedIn, loggedIn}) {
-  // LOGIN / LOGOUT BUTTON
-  // TOGGLES DEPENDING ON WHETHER USER IS LOGGED IN
-
-
-  return (
-		<div className="navbar-container">
-      <h1>App Squared</h1>
-
-      {/* buttons */}
-			<div>
-				{!loggedIn ? (
-					<Link to='/'>Login</Link>
+function Navbar({ loggedIn, handleLogout, userInfo }) {
+	// LOGIN / LOGOUT BUTTON
+	// TOGGLES DEPENDING ON WHETHER USER IS LOGGED IN
+	return (
+		<div className='navbar-container'>
+			<h1 className='navbar-Title'>App Squared</h1>
+			<div className='navbar-links'>
+				{userInfo && <p>{userInfo.username}</p>}
+				{loggedIn ? (
+					<>
+						{/* <Link to='/users/me'>My Profile</Link> */}
+						<Link to='/' onClick={handleLogout}>
+							Logout
+						</Link>
+					</>
 				) : (
-					<Link to='/login'>Logout</Link>
+					<>
+						<Link to='/signup'>Sign Up</Link>
+						<Link to='/login'>Login</Link>
+					</>
 				)}
 			</div>
 		</div>

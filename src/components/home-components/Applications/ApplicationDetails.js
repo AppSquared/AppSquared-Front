@@ -7,7 +7,15 @@ import ModalComp from './ModalComp';
 -SAVE FUNCTIONALITY
 */
 
-function FeedItem({ position, company, link, additionalInfo, pocName, pocNumber, pocEmail }) {
+function ApplicationDetails({
+	position,
+	company,
+	link,
+	additionalInfo,
+	pocName,
+	pocNumber,
+	pocEmail,
+}) {
 	return (
 		<div id='feed-item-div'>
 			<ModalComp
@@ -23,4 +31,4 @@ function FeedItem({ position, company, link, additionalInfo, pocName, pocNumber,
 	);
 }
 
-export default FeedItem;
+export default ApplicationDetails;

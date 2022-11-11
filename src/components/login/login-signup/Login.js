@@ -1,72 +1,77 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
-import axios from 'axios';
+import { Form, Button, Alert } from 'react-bootstrap';
 
-function Login({ setIsLoggedIn, loggedIn }) {
-	const initialFormData = {
+function Login({ setLoggedIn, handleSetLoggedIn }) {
+	const initialFormValues = {
 		email: '',
 		password: '',
 	};
 
 	const navigate = useNavigate();
-	const [formData, setFormData] = useState(initialFormData)
-	const [error, setError] = useState(false)
+	const [formValues, setFormValues] = useState(initialFormValues);
+	const [error, setError] = useState(false);
 
-	const handleChange = (e) =>{
-		setFormData((prevState) => {
+	const handleChange = (e) => {
+		setFormValues((prevState) => {
 			return { ...prevState, [e.target.name]: e.target.value };
 		});
 	};
 
-
 	const handleLogIn = async (e) => {
 		e.preventDefault();
-		setError(false)
-		try{
-			const response = await fetch(API_URL + 'token/login/', {
-			method: 'POST',
-			body: JSON.stringify(formData),
-			headers: {
-					'Content-Type': 'application/json'
-			}
-		})
-			// if(response.status === 200) {
-
-
-			// const data = await response.json()
-			// handleSeIsLoggedIn(data)
-
-			// navigate('/');
+		setError(false);
+		try {
+			const response = await fetch('http://localhost:8000/token/login/', {
+				method: 'POST',
+				body: JSON.stringify(formValues.auth_token),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			if (response.status === 200) {
+				const data = await response.json();
+				handleSetLoggedIn(data.auth_token);
+				navigate('/');
 			} else if (response.status === 400) {
-			setError(true)
+				setError(true);
 			}
 		} catch (error) {}
 		return;
-	}
+	};
 
-	// AXIOS POST REQUEST FOR LOGIN
 	// UPON LOGIN NAVIGATE TO FEED / HOME
 
 	return (
 		<div id='login-main-div'>
 			<h1>Login</h1>
-
-			{/* <form id='login-form' onSubmit={(event) => event.preventDefault()}> */}
-<Form id='login-form' onSubmit={handleLogin}>
-
-				<input name='username' type='text' placeholder='username' />
-
-				<input name='password' type='password' placeholder='password' />
-
-				<button type='submit' onClick={() => setIsLoggedIn(!loggedIn)}>
-					Log In
-				</button>
-				<button type='submit' onClick={() => navigate('/signup')}>
-					Sign Up
-				</button>
+			<Form id='login-form' onSubmit={handleLogIn}>
+				<Form.Group controlId='email'>
+					<Form.Label>Email</Form.Label>
+					<Form.Control
+						required
+						autoFocus
+						type='email'
+						value={formValues.email}
+						onChange={handleChange}
+					/>
+				</Form.Group>
+				<Form.Group controlId='password'>
+					<Form.Control
+						required
+						type='password'
+						value={formValues.password}
+						onChange={handleChange}
+					/>
+				</Form.Group>
+				<Button type='submit'>Log In</Button>
 			</Form>
-			{/* </form> */}
+			{error && (
+				<Alert variant='warning'>
+					User or password not found. Try again or{' '}
+					<Link to='/signup'>sign up</Link>.
+				</Alert>
+			)}
 		</div>
 	);
 }
