@@ -15,7 +15,7 @@ body{
   margin: 0 auto;
 }
 
-nav{
+.navbar-container{
   width: 100vw;
   display: inline-flex;
   justify-content: space-between;
@@ -58,5 +58,11 @@ nav{
 #feed-item-div{
   display: inline-flex;
   margin: 20px;
-  
+
+}
+
+/* form */
+.application-form{
+  display: flex;
+  flex-direction: column;
 }

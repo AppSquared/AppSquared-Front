@@ -1,6 +1,5 @@
 import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-
+import ModalComp from './ModalComp';
 
 /* NEED TO
 -ADD ALL APPLICATION FIELDS
@@ -8,36 +7,18 @@ import Modal from 'react-bootstrap/Modal';
 -SAVE FUNCTIONALITY
 */
 
-function FeedItem({title, subject}) {
-	  const [isOpen, setIsOpen] = React.useState(false);
-
-		const showModal = () => {
-			setIsOpen(true);
-		};
-
-		const hideModal = () => {
-			setIsOpen(false);
-		};
-
-  return (
+function FeedItem({ position, company, link, additionalInfo, pocName, pocNumber, pocEmail }) {
+	return (
 		<div id='feed-item-div'>
-				<button onClick={showModal}># of days since applied here | Title: {title} | Subject: {subject}
-				</button>
-
-				<Modal show={isOpen} onHide={hideModal}>
-					<Modal.Header>
-						<Modal.Title>Edit Application</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						<input value={title}></input>
-						<input value={subject}></input>
-						</Modal.Body>
-					<Modal.Footer>
-						<button onClick={hideModal}>Cancel</button>
-						<button>Save</button>
-					</Modal.Footer>
-				</Modal>
-
+			<ModalComp
+				position={position}
+				company={company}
+				link={link}
+				additionalInfo={additionalInfo}
+				pocName={pocName}
+				pocNumber={pocNumber}
+				pocEmail={pocEmail}
+			/>
 		</div>
 	);
 }

@@ -7,7 +7,7 @@ import { FormGroup } from 'react-bootstrap';
 /*
 [] -REFATOR MODAL - maybe make it separate component?
 [] - Get request that allows you to search based on options put in drop down and text field
-[] - Post request for adding app 
+[] - Post request for adding app
 */
 
 function SearchApps() {
@@ -17,7 +17,7 @@ function SearchApps() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
+	
   return (
 		<div id='search-main-div'>
 			<form onSubmit={(event) => event.preventDefault()}>
