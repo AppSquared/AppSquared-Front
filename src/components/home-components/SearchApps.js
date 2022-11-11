@@ -10,30 +10,84 @@ import { FormGroup } from 'react-bootstrap';
 [] - Post request for adding app
 */
 
-function SearchApps() {
+function SearchApps()  {
+
+const apps = [
+	{
+		position: 'test position 1',
+		company: 'test company 1',
+		link: 'test link 1',
+		additionalInfo: 'test additional info 1',
+		pocName: 'test poc name',
+		pocNumber: 'test poc number',
+		pocEmail: 'test poc email',
+	},
+	{
+		position: 'test position 2',
+		company: 'test company 2',
+		link: 'test link 2',
+		additionalInfo: 'test additional info 2',
+		pocName: 'test poc name 2',
+		pocNumber: 'test poc number 2',
+		pocEmail: 'test poc email 2',
+	},
+	{
+		position: 'test position 3',
+		company: 'test company 3',
+		link: 'test link 3',
+		additionalInfo: 'test additional info 3',
+		pocName: 'test poc name 3',
+		pocNumber: 'test poc number 3',
+		pocEmail: 'test poc email 3',
+	},
+];
+
 
   const [show, setShow] = useState(false);
+  const [searchResults, setSearchResults] = useState([])
+  const [finalSearch, setFinalSearch] = useState([])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-	
+
+  function handleChange(event) {
+	const searchBy = event.target.value
+	const filter = apps.filter((app) => {
+		return app.includes(searchBy) 
+
+	})
+
+	setSearchResults(filter)
+	console.log(searchResults)
+  };
+
+   function handleSubmit(event) {
+	event.preventDefault()
+	setFinalSearch(searchResults)
+	console.log(finalSearch)
+   }
   return (
 		<div id='search-main-div'>
 			<form onSubmit={(event) => event.preventDefault()}>
 				<label>Search By:</label>
 				<select>
-					<option>Placeholder</option>
-					<option>Option 1</option>
-					<option>Option 2</option>
-					<option>Option 3</option>
+					<option>status</option>           
+					{/* <option>company</option>
+					<option>link</option>
+					<option>additionalInfo</option>
+					<option>pocName</option>
+					<option>pocNumber</option>
+					<option>pocEmail</option> */}
 				</select>
 				<input
 					id='search-by-select'
 					type='text'
 					placeholder='Leave Blank if you wish to search your specified field for ALL options'
+					onChange={handleChange}
+					
 				/>
-				<button type='submit'>Search</button>
+				<button type='submit' onClick={handleSubmit}>Search</button>
 				<button type='submit' onClick={handleShow}>
 					Add App
 				</button>

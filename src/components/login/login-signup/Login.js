@@ -24,20 +24,20 @@ function Login({ setIsLoggedIn, loggedIn }) {
 		e.preventDefault();
 		setError(false)
 		try{
-			const response = await fetch(API_URL + 'token/login/', {
-			method: 'POST',
-			body: JSON.stringify(formData),
-			headers: {
-					'Content-Type': 'application/json'
-			}
-		})
-			// if(response.status === 200) {
+			const response = await fetch('https://localhost:8000/' + 'token/login/', {
+				method: 'POST',
+				body: JSON.stringify(formData),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			if(response.status === 200) {
 
 
-			// const data = await response.json()
-			// handleSeIsLoggedIn(data)
-
-			// navigate('/');
+			const data = await response.json()
+			setIsLoggedIn(data.auth_token)
+			console.log(loggedIn)
+			navigate('/');
 			} else if (response.status === 400) {
 			setError(true)
 			}
@@ -53,7 +53,7 @@ function Login({ setIsLoggedIn, loggedIn }) {
 			<h1>Login</h1>
 
 			{/* <form id='login-form' onSubmit={(event) => event.preventDefault()}> */}
-<Form id='login-form' onSubmit={handleLogin}>
+<Form id='login-form' onSubmit={handleLogIn}>
 
 				<input name='username' type='text' placeholder='username' />
 
