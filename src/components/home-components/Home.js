@@ -1,17 +1,25 @@
-import Feed from './feed components/Feed';
+import { useNavigate } from 'react-router-dom';
+import Applications from './Applications/Applications';
 import SearchApps from './SearchApps';
 
-function Home({loggedIn}) {
-  return (
-    <div>
-      <SearchApps />
-      <hr></hr>
+function Home({ loggedIn }) {
+	const navigate = useNavigate();
 
-      <h3>Currently Viewing Your Home</h3>
-      
-      <Feed />
-    </div>
-  );
+	function render() {
+		{
+			loggedIn ? (
+				<div>
+					<SearchApps />
+					<hr></hr>
+					<h3>Currently Viewing Your Home</h3>
+					<Applications loggedIn={loggedIn} />
+				</div>
+			) : (
+				navigate('/login')
+			);
+		}
+	}
+	return <>{render()}</>;
 }
 
 export default Home;
