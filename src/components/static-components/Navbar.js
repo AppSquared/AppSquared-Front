@@ -6,7 +6,7 @@ function Navbar({setIsLoggedIn, loggedIn}) {
 
 
   return (
-		<>
+		<div className="navbar-container">
       <h1>App Squared</h1>
 
       {/* buttons */}
@@ -17,7 +17,7 @@ function Navbar({setIsLoggedIn, loggedIn}) {
 					<Link to='/login'>Logout</Link>
 				)}
 			</div>
-		</>
+		</div>
 	);
 }
 

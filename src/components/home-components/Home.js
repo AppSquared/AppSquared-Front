@@ -8,7 +8,7 @@ function Home({loggedIn}) {
       <hr></hr>
 
       <h3>Currently Viewing Your Home</h3>
-
+      
       <Feed />
     </div>
   );
