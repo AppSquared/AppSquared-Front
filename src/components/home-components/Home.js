@@ -1,13 +1,12 @@
-// import { useNavigate } from 'react-router-dom';
 import Applications from './Applications/Applications';
 import { Link } from 'react-router-dom';
 
 function Home({ loggedIn, userInfo }) {
 	// const navigate = useNavigate();
 
-	return (
-		<>
-			{{ loggedIn } ? (
+	function render() {
+		{
+			loggedIn ? (
 				<div>
 					<h3>Home</h3>
 					<hr></hr>
