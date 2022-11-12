@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 function Home({ loggedIn, userInfo }) {
 	// const navigate = useNavigate();
 
-	function render() {
-		{
-			loggedIn ? (
+	return (
+		<>
+			{{ loggedIn } ? (
 				<div>
 					<h3>Home</h3>
 					<hr></hr>
