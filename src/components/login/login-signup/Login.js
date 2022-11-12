@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-function Login({ setLoggedIn, handleSetLoggedIn }) {
+function Login({ handleSetLoggedIn }) {
 	const initialFormValues = {
 		email: '',
 		password: '',
@@ -22,10 +22,11 @@ function Login({ setLoggedIn, handleSetLoggedIn }) {
 		e.preventDefault();
 		setError(false);
 		try {
-			const response = await fetch('http://localhost:8000/token/login/', {
+			const response = await fetch('http://localhost:8000/token/login', {
 				method: 'POST',
-				body: JSON.stringify(formValues.auth_token),
+				body: JSON.stringify(formValues),
 				headers: {
+					Accept: 'application/json, text/plain, */*',
 					'Content-Type': 'application/json',
 				},
 			});
@@ -40,7 +41,7 @@ function Login({ setLoggedIn, handleSetLoggedIn }) {
 		return;
 	};
 
-	// UPON LOGIN NAVIGATE TO FEED / HOME
+	// UPON LOGIN NAVIGATE TO HOME
 
 	return (
 		<div id='login-main-div'>
@@ -52,6 +53,8 @@ function Login({ setLoggedIn, handleSetLoggedIn }) {
 						required
 						autoFocus
 						type='email'
+						name='email'
+						placeholder='example@example.com'
 						value={formValues.email}
 						onChange={handleChange}
 						placeholder={'Email'}
@@ -59,9 +62,12 @@ function Login({ setLoggedIn, handleSetLoggedIn }) {
 				</Form.Group>
 				{/* <Form.Label>Password</Form.Label> */}
 				<Form.Group controlId='password'>
+					<Form.Label>Password</Form.Label>
 					<Form.Control
 						required
 						type='password'
+						name='password'
+						placeholder='Password'
 						value={formValues.password}
 						onChange={handleChange}
 						placeholder={'Password'}

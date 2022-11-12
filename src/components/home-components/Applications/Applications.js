@@ -9,7 +9,7 @@ function Applications({ loggedIn }) {
 	const getApplications = async () => {
 		try {
 			setError(false);
-			const response = await fetch('http://localhost:8000/users/');
+			const response = await fetch('http://localhost:8000/applications/');
 			if (response.status === 200) {
 				const data = await response.json();
 				setApplications(data);
@@ -25,8 +25,7 @@ function Applications({ loggedIn }) {
 		getApplications();
 	}, []);
 
-	if (error && !applications.length) {
-		console.log(error);
+	if (!error && !applications.length) {
 		return <div>No applications found.</div>;
 	}
 	return (
@@ -38,7 +37,7 @@ function Applications({ loggedIn }) {
 				</Link>
 			)}
 			<div id='feed-main-div'>
-				<h3>My Feed</h3>
+				<h2>My Feed</h2>
 				<hr />
 				{applications.map((application) => {
 					return (
