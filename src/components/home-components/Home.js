@@ -1,25 +1,26 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Applications from './Applications/Applications';
-import SearchApps from './SearchApps';
+import { Link } from 'react-router-dom';
 
-function Home({ loggedIn }) {
-	const navigate = useNavigate();
+function Home({ loggedIn, userInfo }) {
+	// const navigate = useNavigate();
 
-	function render() {
-		{
-			loggedIn ? (
+	return (
+		<>
+			{{ loggedIn } ? (
 				<div>
-					<SearchApps />
+					<h3>Home</h3>
 					<hr></hr>
-					<h3>Currently Viewing Your Home</h3>
-					<Applications loggedIn={loggedIn} />
+					<Applications userInfo={userInfo} loggedIn={loggedIn} />
 				</div>
 			) : (
-				navigate('/login')
-			);
-		}
-	}
-	return <>{render()}</>;
+				<h2>
+					<Link to='/login'>Log in</Link> or <Link to='/signup'>Sign up</Link>{' '}
+					to view your feed.
+				</h2>
+			)}
+		</>
+	);
 }
 
 export default Home;

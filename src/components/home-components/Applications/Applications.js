@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import SearchApps from '../SearchApps';
 
-function Applications({ loggedIn }) {
+function Applications({ loggedIn, userInfo }) {
 	const [applications, setApplications] = useState([]);
 	const [error, setError] = useState(false);
 
 	const getApplications = async () => {
 		try {
 			setError(false);
-			const response = await fetch('http://localhost:8000/users/');
+			const response = await fetch('http://localhost:8000/applications/');
 			if (response.status === 200) {
 				const data = await response.json();
 				setApplications(data);
@@ -25,39 +26,44 @@ function Applications({ loggedIn }) {
 		getApplications();
 	}, []);
 
-	if (error && !applications.length) {
-		console.log(error);
+	if (!error && !applications.length) {
 		return <div>No applications found.</div>;
 	}
 	return (
 		<div>
-			<h1>Applications</h1>
 			{loggedIn && (
-				<Link to='applications/new'>
-					<Button>Add an application</Button>
-				</Link>
-			)}
-			<div id='feed-main-div'>
-				<h3>My Feed</h3>
-				<hr />
-				{applications.map((application) => {
-					return (
-						<div>
-							<div> {application.id}</div>
-							<div>{application.date_applied}</div>
-							<div>{application.notes}</div>
-							<div>{application.link}</div>
-							<div>{application.status}</div>
-							{/* <div>{(position = application.position)}</div>
+				<Container>
+					<SearchApps />
+					<div id='feed-main-div'>
+						<h2>My Feed</h2>
+						<hr />
+						{applications.map((application) => {
+							return (
+								<div>
+									<Link to={application.application_url}>
+										Click here to view this app
+									</Link>
+									<div>Current status: {application.status}</div>
+									<div>Applied on: {application.date_applied}</div>
+									<div>Created on: {application.date_logged}</div>
+									<div>Created by: {application.owner}</div>
+									<div>
+										<p>Notes:</p>
+										<p>{application.notes}</p>
+									</div>
+									{/* <div>{(position = application.position)}</div>
 							<div>{(company = application.company)}</div>
 							<div>{(additionalInfo = application.additionalInfo)}</div>
 							<div>{(pocName = application.pocName)}</div>
 							<div>{(pocNumber = application.pocNumber)}</div>
 							<div>{(pocEmail = application.pocEmail)}</div> */}
-						</div>
-					);
-				})}
-			</div>
+									<br />
+								</div>
+							);
+						})}
+					</div>
+				</Container>
+			)}
 		</div>
 	);
 }

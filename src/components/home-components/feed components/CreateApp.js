@@ -1,43 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { FormGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
-/*
-[] -REFATOR MODAL - maybe make it separate component?
-[] - Get request that allows you to search based on options put in drop down and text field
-[] - Post request for adding app
-*/
 
-function SearchApps() {
-	const [show, setShow] = useState(false);
+function CreateApp({setShow, show}) {
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+		const handleClose = () => setShow(false);
 
-	return (
-		<div id='search-main-div'>
-			<form onSubmit={(event) => event.preventDefault()}>
-				<label>Search By:</label>
-				<select>
-					<option>Placeholder</option>
-					<option>Option 1</option>
-					<option>Option 2</option>
-					<option>Option 3</option>
-				</select>
-				<input
-					id='search-by-select'
-					type='text'
-					placeholder='Leave Blank if you wish to search your specified field for ALL options'
-				/>
-				<button type='submit'>Search</button>
-				{/* <Link to='applications/new'> */}
-				<Button onClick={handleShow}>New Application</Button>
-				{/* </Link> */}
-			</form>
-
+  return (
+		<div>
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
 					<Modal.Title>Create Application</Modal.Title>
@@ -96,4 +68,4 @@ function SearchApps() {
 	);
 }
 
-export default SearchApps;
+export default CreateApp;

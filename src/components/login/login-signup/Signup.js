@@ -3,7 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 
 function Signup() {
-	const initialFormData = {
+	const initialFormValues = {
 		email: '',
 		username: '',
 		password: '',
@@ -11,13 +11,15 @@ function Signup() {
 	};
 
 	const navigate = useNavigate();
-	const [formData, setFormData] = useState(initialFormData);
+	const [formValues, setFormValues] = useState(initialFormValues);
 	const [success, setSuccess] = useState(false);
 	const [error, setError] = useState(false);
 	const [signupErrors, setSignupErrors] = useState([]);
 
 	const handleChange = (e) => {
-		setFormData((prevState) => {
+		setFormValues((prevState) => {
+			console.log(e.target.name);
+			console.log(e.target.value);
 			return { ...prevState, [e.target.name]: e.target.value };
 		});
 	};
@@ -26,11 +28,13 @@ function Signup() {
 		e.preventDefault();
 		setError(false);
 		setSignupErrors([]);
+
 		try {
 			const response = await fetch('http://localhost:8000/users/', {
 				method: 'POST',
-				body: JSON.stringify(formData),
+				body: JSON.stringify(formValues),
 				headers: {
+					Accept: 'application/json, text/plain, */*',
 					'Content-Type': 'application/json',
 				},
 			});
@@ -38,23 +42,23 @@ function Signup() {
 				setSuccess(true);
 				setTimeout(() => {
 					navigate('/login');
-				}, 4000);
+				}, 3000);
 			} else {
 				const data = await response.json();
 				const errors = [];
 				for (const error in data) {
 					errors.push(data[error]);
 				}
-
-				setSignupErrors(errors);
 			}
-		} catch (err) {
+
+			setSignupErrors(error);
+		} catch (error) {
 			setError(true);
 		}
 		return;
 	};
 	const handlePasswordMatch = (e) => {
-		if (formData.password !== formData.re_password) {
+		if (formValues.password !== formValues.re_password) {
 			setError(true);
 		} else {
 			setError(false);
@@ -62,51 +66,57 @@ function Signup() {
 	};
 
 	return (
-		<div className='hide' id='login-main-div'>
-			<h1>Sign Up</h1>
+		<div className='hide' id='signup-main-div'>
+			<h2 id='signup-title'>App Squared</h2>
 			<Form onSubmit={handleSubmit} id='signup-form'>
 				<Form.Group controlId='username'>
-					<Form.Label>Username</Form.Label>
+					{/* <Form.Label>Username</Form.Label> */}
 					<Form.Control
 						required
 						autoFocus
 						type='text'
 						name='username'
-						value={formData.username}
+						value={formValues.username}
 						onChange={handleChange}
+						placeholder={'Username'}
 					/>
 				</Form.Group>
 				<Form.Group controlId='formBasicEmail'>
-					<Form.Label>Email</Form.Label>
+					{/* <Form.Label>Email</Form.Label> */}
 					<Form.Control
 						required
 						type='email'
 						name='email'
-						value={formData.email}
+						value={formValues.email}
 						onChange={handleChange}
+						placeholder={'Email'}
 					/>
 					<Form.Control.Feedback type='invalid'>
 						Please provide a valid email .
 					</Form.Control.Feedback>
 				</Form.Group>
 				<Form.Group controlId='password'>
-					<Form.Label>Password</Form.Label>
+					{/* <Form.Label>Password</Form.Label> */}
 					<Form.Control
 						required
 						type='password'
 						name='password'
-						value={formData.password}
+						defaultValue={formValues.password}
 						onChange={handleChange}
+						placeholder={'Password'}
 					/>
 				</Form.Group>
 				<Form.Group controlId='re_password'>
-					<Form.Label>Confirm Password</Form.Label>
+					{/* <Form.Label>Confirm Password</Form.Label> */}
 					<Form.Control
 						required
 						type='password'
-						value={FormData.re_password}
+						name='re_password'
+						defaultValue={formValues.re_password}
 						onChange={handleChange}
 						onBlur={handlePasswordMatch}
+						placeholder={'Confirm Password'}
+						
 					/>
 				</Form.Group>
 				<Button type='submit' disabled={error}>
@@ -116,8 +126,8 @@ function Signup() {
 				{error && <Alert variant='danger'>Passwords do not match.</Alert>}
 				{success && (
 					<Alert variant='success'>
-						Success! We're redirecting you now, or you can click{' '}
-						{<Link to='/login'>here</Link>}.
+						Success! Redirecting you now, or you can click{' '}
+						{<Link to='/login'>here</Link>} to login.
 					</Alert>
 				)}
 				{Boolean(signupErrors.length) &&
