@@ -36,20 +36,18 @@ function App() {
 
 	const handleLogout = async () => {
 		try {
-			const response = await fetch('http://localhost:8000/token/logout/', {
+			await fetch('http://localhost:8000/token/logout/', {
 				method: 'POST',
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
 			});
 
-			if (response.status === 204) {
-				setLoggedIn(false);
-				setUserInfo(null);
-				localStorage.removeItem('token');
-				alert('You have been logged out!');
-				navigate('/');
-			}
+			setLoggedIn(false);
+			setUserInfo(null);
+			localStorage.removeItem('token');
+			alert('You have been logged out!');
+			navigate('/');
 		} catch (error) {
 			console.log(error);
 		}

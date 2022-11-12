@@ -1,13 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Applications from './Applications/Applications';
 import SearchApps from './SearchApps';
+import { Link } from 'react-router-dom';
 
 function Home({ loggedIn }) {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
-	function render() {
-		{
-			loggedIn ? (
+	return (
+		<>
+			{{ loggedIn } ? (
 				<div>
 					<SearchApps />
 					<hr></hr>
@@ -15,11 +16,13 @@ function Home({ loggedIn }) {
 					<Applications loggedIn={loggedIn} />
 				</div>
 			) : (
-				navigate('/login')
-			);
-		}
-	}
-	return <>{render()}</>;
+				<h2>
+					<Link to='/login'>Log in</Link> or <Link to='/signup'>Sign up</Link>{' '}
+					to view your feed.
+				</h2>
+			)}
+		</>
+	);
 }
 
 export default Home;

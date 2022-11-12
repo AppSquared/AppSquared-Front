@@ -7,26 +7,19 @@ import ModalComp from './ModalComp';
 -SAVE FUNCTIONALITY
 */
 
-function ApplicationDetails({
-	position,
-	company,
-	link,
-	additionalInfo,
-	pocName,
-	pocNumber,
-	pocEmail,
-}) {
+function ApplicationDetails() {
 	return (
 		<div id='feed-item-div'>
-			<ModalComp
+			<h1>details go here smile</h1>
+			{/* <ModalComp
 				position={position}
 				company={company}
 				link={link}
 				additionalInfo={additionalInfo}
 				pocName={pocName}
 				pocNumber={pocNumber}
-				pocEmail={pocEmail}
-			/>
+				pocEmail={pocEmail} 
+	/>*/}
 		</div>
 	);
 }
