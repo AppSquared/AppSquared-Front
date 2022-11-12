@@ -45,11 +45,18 @@ function App() {
 				},
 			});
 
-			setLoggedIn(false);
-			setUserInfo(null);
-			localStorage.removeItem('token');
-			alert('You have been logged out!');
-			navigate('/');
+			if (response.status === 204) {
+				// console.log(loggedIn);
+				// console.log(userInfo);
+				// console.log(localStorage);
+				setLoggedIn(false);
+				setUserInfo(null);
+				localStorage.removeItem('token');
+				// console.log(loggedIn);
+				// console.log(userInfo);
+				// console.log(localStorage);
+				navigate('/login');
+			}
 		} catch (error) {
 			console.log(error);
 		}

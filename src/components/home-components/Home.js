@@ -1,9 +1,8 @@
 // import { useNavigate } from 'react-router-dom';
 import Applications from './Applications/Applications';
-import SearchApps from './SearchApps';
 import { Link } from 'react-router-dom';
 
-function Home({ loggedIn }) {
+function Home({ loggedIn, userInfo }) {
 	// const navigate = useNavigate();
 
 	return (
