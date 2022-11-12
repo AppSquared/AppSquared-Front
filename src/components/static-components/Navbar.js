@@ -5,7 +5,9 @@ function Navbar({ loggedIn, handleLogout, userInfo }) {
 	// TOGGLES DEPENDING ON WHETHER USER IS LOGGED IN
 	return (
 		<div className='navbar-container'>
-			<h1 className='navbar-Title'>App Squared</h1>
+			<h1 className='navbar-Title'>
+				<Link to='/'>App Squared</Link>
+			</h1>
 			<div className='navbar-links'>
 				{userInfo && <p>{userInfo.username}</p>}
 				{loggedIn ? (

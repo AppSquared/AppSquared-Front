@@ -36,18 +36,25 @@ function App() {
 
 	const handleLogout = async () => {
 		try {
-			await fetch('http://localhost:8000/token/logout/', {
+			let response = await fetch('http://localhost:8000/token/logout/', {
 				method: 'POST',
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
 			});
 
-			setLoggedIn(false);
-			setUserInfo(null);
-			localStorage.removeItem('token');
-			alert('You have been logged out!');
-			navigate('/');
+			if (response.status === 204) {
+				// console.log(loggedIn);
+				// console.log(userInfo);
+				// console.log(localStorage);
+				setLoggedIn(false);
+				setUserInfo(null);
+				localStorage.removeItem('token');
+				// console.log(loggedIn);
+				// console.log(userInfo);
+				// console.log(localStorage);
+				navigate('/login');
+			}
 		} catch (error) {
 			console.log(error);
 		}
@@ -69,7 +76,10 @@ function App() {
 				userInfo={userInfo}
 			/>
 			<Routes>
-				<Route path='/' element={<Home loggedIn={loggedIn} />} />
+				<Route
+					path='/'
+					element={<Home userInfo={userInfo} loggedIn={loggedIn} />}
+				/>
 				<Route
 					path='/login'
 					element={

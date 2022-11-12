@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FormGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 /*
 [] -REFATOR MODAL - maybe make it separate component?
@@ -11,14 +12,12 @@ import { FormGroup } from 'react-bootstrap';
 */
 
 function SearchApps() {
+	const [show, setShow] = useState(false);
 
-  const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-	
-  return (
+	return (
 		<div id='search-main-div'>
 			<form onSubmit={(event) => event.preventDefault()}>
 				<label>Search By:</label>
@@ -34,9 +33,9 @@ function SearchApps() {
 					placeholder='Leave Blank if you wish to search your specified field for ALL options'
 				/>
 				<button type='submit'>Search</button>
-				<button type='submit' onClick={handleShow}>
-					Add App
-				</button>
+				{/* <Link to='applications/new'> */}
+				<Button onClick={handleShow}>New Application</Button>
+				{/* </Link> */}
 			</form>
 
 			<Modal show={show} onHide={handleClose}>
