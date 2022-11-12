@@ -12,7 +12,21 @@ function Navbar({ loggedIn, handleLogout, userInfo }) {
 			<div className='navbar-links'>
 				{userInfo && <p>{userInfo.username}</p>}
 				{loggedIn ? (
-					<>{/* <Link to='/users/me'>My Profile</Link> */}</>
+					<>
+						{/* <Link to='/users/me'>My Profile</Link> */}
+						<div id='outer-container'>
+							<Menu
+								pageWrapId={'page-wrap'}
+								outerContainerId={'outer-container'}
+								isOpen={false}
+								noOverlay
+								right>
+								<Link to='/' onClick={handleLogout}>
+									Logout
+								</Link>
+							</Menu>
+						</div>
+					</>
 				) : (
 					<>
 						<div id='outer-container'>
