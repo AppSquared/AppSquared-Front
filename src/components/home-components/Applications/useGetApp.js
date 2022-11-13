@@ -17,7 +17,7 @@ export default function useGetApp(id) {
 
 	useEffect(() => {
 		getApplicationDetails();
-	});
+	}, []);
 
 	return application;
 }
