@@ -29,22 +29,7 @@ function SearchApps() {
 					placeholder='Leave Blank if you wish to search your specified field for ALL options'
 				/>
 				<button type='submit'>Search</button>
-				<Button onClick={() => setShow(true)}>New Application</Button>
 			</form>
-
-			<Modal show={show} onHide={() => setShow(false)}>
-				<Modal.Header>
-					<Modal.Title>New Application</Modal.Title>
-				</Modal.Header>
-				<Modal.Body closeButton>
-					<ApplicationCreate setShow={setShow} />
-				</Modal.Body>
-				<Modal.Footer>
-					<Button variant='secondary' onClick={() => setShow(false)}>
-						Close
-					</Button>
-				</Modal.Footer>
-			</Modal>
 		</div>
 	);
 }

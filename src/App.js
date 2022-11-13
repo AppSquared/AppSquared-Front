@@ -3,6 +3,8 @@ import Navbar from './components/static-components/Navbar';
 import Login from './components/login/login-signup/Login';
 import Signup from './components/login/login-signup/Signup';
 import Home from './components/home-components/Home';
+import ApplicationDetails from './components/home-components/Applications/ApplicationDetails';
+import ApplicationEdit from './components/home-components/Applications/ApplicationEdit';
 import FooterBar from './components/static-components/Footer';
 import { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
@@ -90,6 +92,13 @@ function App() {
 					}
 				/>
 				<Route path='/signup' element={<Signup />} />
+				<Route
+					path='/applications/:id'
+					element={
+						<ApplicationDetails userInfo={userInfo} loggedIn={loggedIn} />
+					}
+				/>
+				<Route path='/applications/:id/edit' element={<ApplicationEdit />} />
 				{/* 
 				<Route path='/applications' element={<Applications />} />
 				<Route
@@ -97,13 +106,7 @@ function App() {
 					element={ApplicationCreate}
 					loggedIn={loggedIn}
 				/>
-				<Route
-					path='/applications/:id'
-					element={
-						<ApplicationDetail userInfo={userInfo} loggedIn={loggedIn} />
-					}
-				/>
-				<Route path='/applications/:id/edit' element={ApplicationEdit} /> */}
+				*/}
 			</Routes>
 			<FooterBar />
 		</div>

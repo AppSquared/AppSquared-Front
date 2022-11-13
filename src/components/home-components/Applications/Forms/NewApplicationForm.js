@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-function ApplicationForm({
+function NewApplicationForm({
 	handleSubmit,
 	formValues,
 	handleChange,
@@ -63,4 +63,4 @@ function ApplicationForm({
 	);
 }
 
-export default ApplicationForm;
+export default NewApplicationForm;

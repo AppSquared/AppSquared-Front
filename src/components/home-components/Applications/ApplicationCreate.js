@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ApplicationForm from './ApplicationForm';
+import NewApplicationForm from './Forms/NewApplicationForm';
 
 function ApplicationCreate({ setShow }) {
 	const initialApplicationValues = {
@@ -32,14 +32,16 @@ function ApplicationCreate({ setShow }) {
 				},
 			});
 			if (response.status === 201) {
-				navigate('/');
+				window.location = '/';
 			}
-		} catch (error) {}
+		} catch (err) {
+			return;
+		}
 	};
 
 	return (
 		<div>
-			<ApplicationForm
+			<NewApplicationForm
 				setShow={setShow}
 				handleSubmit={createApplication}
 				handleChange={handleChange}
