@@ -40,7 +40,7 @@ function Applications({ loggedIn, userInfo }) {
 						{applications.map((application) => {
 							return (
 								<div>
-									<Link to={application.application_url}>
+									<Link to={`/applications/${application.id}`}>
 										Click here to view this app
 									</Link>
 									<div>Current status: {application.status}</div>
