@@ -58,8 +58,8 @@ function Applications({ loggedIn, userInfo }) {
 						<hr />
 						{applications.map((application) => {
 							return (
-								<Link to={`/applications/${application.id}`}>
-									<div key={application.id}>
+								<div key={application.id}>
+									<Link to={`/applications/${application.id}`}>
 										<div>Current status: {application.status}</div>
 										<div>Applied on: {application.date_applied}</div>
 										<div>Created on: {application.date_logged}</div>
@@ -75,8 +75,8 @@ function Applications({ loggedIn, userInfo }) {
 							<div>{(pocNumber = application.pocNumber)}</div>
 							<div>{(pocEmail = application.pocEmail)}</div> */}
 										<br />
-									</div>
-								</Link>
+									</Link>
+								</div>
 							);
 						})}
 					</div>
