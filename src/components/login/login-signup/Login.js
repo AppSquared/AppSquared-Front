@@ -45,7 +45,7 @@ function Login({ handleSetLoggedIn }) {
 
 	return (
 		<div id='login-main-div'>
-			<h2 id="login-title">App Squared</h2>
+			<h2 id='login-title'>App Squared</h2>
 			<Form id='login-form' onSubmit={handleLogIn}>
 				<Form.Group controlId='email'>
 					{/* <Form.Label>Email</Form.Label> */}
@@ -57,7 +57,6 @@ function Login({ handleSetLoggedIn }) {
 						placeholder='example@example.com'
 						value={formValues.email}
 						onChange={handleChange}
-						placeholder={'Email'}
 					/>
 				</Form.Group>
 				{/* <Form.Label>Password</Form.Label> */}
@@ -70,10 +69,11 @@ function Login({ handleSetLoggedIn }) {
 						placeholder='Password'
 						value={formValues.password}
 						onChange={handleChange}
-						placeholder={'Password'}
 					/>
 				</Form.Group>
-				<Button id='login-button' type='submit'>Log In</Button>
+				<Button id='login-button' type='submit'>
+					Log In
+				</Button>
 			</Form>
 			{error && (
 				<Alert variant='warning'>

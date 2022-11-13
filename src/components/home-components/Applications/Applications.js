@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
+import { Container, Button, Modal } from 'react-bootstrap';
 import SearchApps from '../SearchApps';
+import ApplicationCreate from './ApplicationCreate';
+import ApplicationDetails from './ApplicationDetails';
 
 function Applications({ loggedIn, userInfo }) {
 	const [applications, setApplications] = useState([]);
 	const [error, setError] = useState(false);
+	const [show, setShow] = useState(false);
 
 	const getApplications = async () => {
 		try {
@@ -17,7 +20,7 @@ function Applications({ loggedIn, userInfo }) {
 			} else {
 				setError(true);
 			}
-		} catch (error) {
+		} catch (err) {
 			setError(true);
 		}
 		return;
@@ -29,6 +32,7 @@ function Applications({ loggedIn, userInfo }) {
 	if (!error && !applications.length) {
 		return <div>No applications found.</div>;
 	}
+
 	return (
 		<div>
 			{loggedIn && (
@@ -36,29 +40,43 @@ function Applications({ loggedIn, userInfo }) {
 					<SearchApps />
 					<div id='feed-main-div'>
 						<h2>My Feed</h2>
+						<Button onClick={() => setShow(true)}>New Application</Button>
+
+						<Modal show={show} onHide={() => setShow(false)}>
+							<Modal.Header>
+								<Modal.Title>New Application</Modal.Title>
+							</Modal.Header>
+							<Modal.Body>
+								<ApplicationCreate setShow={setShow} />
+							</Modal.Body>
+							<Modal.Footer>
+								<Button variant='secondary' onClick={() => setShow(false)}>
+									Close
+								</Button>
+							</Modal.Footer>
+						</Modal>
 						<hr />
 						{applications.map((application) => {
 							return (
-								<div>
-									<Link to={application.application_url}>
-										Click here to view this app
-									</Link>
-									<div>Current status: {application.status}</div>
-									<div>Applied on: {application.date_applied}</div>
-									<div>Created on: {application.date_logged}</div>
-									<div>Created by: {application.owner}</div>
-									<div>
-										<p>Notes:</p>
-										<p>{application.notes}</p>
-									</div>
-									{/* <div>{(position = application.position)}</div>
+								<Link to={`/applications/${application.id}`}>
+									<div key={application.id}>
+										<div>Current status: {application.status}</div>
+										<div>Applied on: {application.date_applied}</div>
+										<div>Created on: {application.date_logged}</div>
+										<div>Created by: {application.owner}</div>
+										<div>
+											<p>Notes:</p>
+											<p>{application.notes}</p>
+										</div>
+										{/* <div>{(position = application.position)}</div>
 							<div>{(company = application.company)}</div>
 							<div>{(additionalInfo = application.additionalInfo)}</div>
 							<div>{(pocName = application.pocName)}</div>
 							<div>{(pocNumber = application.pocNumber)}</div>
 							<div>{(pocEmail = application.pocEmail)}</div> */}
-									<br />
-								</div>
+										<br />
+									</div>
+								</Link>
 							);
 						})}
 					</div>

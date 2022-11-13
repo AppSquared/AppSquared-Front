@@ -1,4 +1,3 @@
-// import { useNavigate } from 'react-router-dom';
 import Applications from './Applications/Applications';
 import { Link } from 'react-router-dom';
 
