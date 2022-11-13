@@ -4,8 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ApplicationCreate from './Applications/ApplicationCreate';
 
-function SearchApps() {
-	const [show, setShow] = useState(false);
+
 
 	return (
 		<div id='search-main-div'>
@@ -16,8 +15,7 @@ function SearchApps() {
 						as='select'
 						defaultValue={'Default'}
 						onChange={(e) => {
-							setType(e.target.value);
-							// handleSortSubmit();
+							setType(e.target.value)
 						}}>
 						<option value='Default'>All</option>
 						<option value='Most Recent'>Most Recent</option>
@@ -29,13 +27,18 @@ function SearchApps() {
 				</Form.Group>
 			</Form>
 
-			<Form>
+			<Form id="search-form" onSubmit={handleSubmit}>
 				<Form.Label>Search Applications</Form.Label>
+				<div id="form-input-button">
 				<Form.Control
 					controlId='search-by-select'
 					type='text'
-					placeholder='Leave Blank if you wish to search your specified field for ALL options'
+					placeholder='Begin Typing to Search'
 				/>
+				<Button type='submit'>Search</Button>
+				{/* <Link to='applications/new'> */}
+				<Button onClick={handleShow}>New Application</Button>
+				{/* </Link> */}
 			</Form>
 		</div>
 	);
