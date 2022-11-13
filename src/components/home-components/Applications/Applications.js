@@ -58,26 +58,25 @@ function Applications({ loggedIn, userInfo }) {
 						<hr />
 						{applications.map((application) => {
 							return (
-								<div key={application.id}>
-									<div>Current status: {application.status}</div>
-									<div>Applied on: {application.date_applied}</div>
-									<div>Created on: {application.date_logged}</div>
-									<div>Created by: {application.owner}</div>
-									<div>
-										<p>Notes:</p>
-										<p>{application.notes}</p>
-										<Link to={`/applications/${application.id}`}>
-											View Details
-										</Link>
-									</div>
-									{/* <div>{(position = application.position)}</div>
+								<Link to={`/applications/${application.id}`}>
+									<div key={application.id}>
+										<div>Current status: {application.status}</div>
+										<div>Applied on: {application.date_applied}</div>
+										<div>Created on: {application.date_logged}</div>
+										<div>Created by: {application.owner}</div>
+										<div>
+											<p>Notes:</p>
+											<p>{application.notes}</p>
+										</div>
+										{/* <div>{(position = application.position)}</div>
 							<div>{(company = application.company)}</div>
 							<div>{(additionalInfo = application.additionalInfo)}</div>
 							<div>{(pocName = application.pocName)}</div>
 							<div>{(pocNumber = application.pocNumber)}</div>
 							<div>{(pocEmail = application.pocEmail)}</div> */}
-									<br />
-								</div>
+										<br />
+									</div>
+								</Link>
 							);
 						})}
 					</div>
