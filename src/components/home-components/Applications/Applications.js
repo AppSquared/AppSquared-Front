@@ -47,7 +47,7 @@ function Applications({ loggedIn, userInfo, applications }) {
 		return;
 	};
 
-	// if no applications, show
+
 	if (!error && !applications.length) {
 		return <div>No applications found.</div>;
 	}
