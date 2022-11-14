@@ -3,8 +3,13 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ApplicationCreate from './Applications/ApplicationCreate';
+import { Form } from 'react-bootstrap';
 
-
+function SearchApps({ setType, setSearch, search, handleSubmit }) {
+	// MODAL
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+	const [show, setShow] = useState(false);
 
 	return (
 		<div id='search-main-div'>
@@ -15,7 +20,7 @@ import ApplicationCreate from './Applications/ApplicationCreate';
 						as='select'
 						defaultValue={'Default'}
 						onChange={(e) => {
-							setType(e.target.value)
+							setType(e.target.value);
 						}}>
 						<option value='Default'>All</option>
 						<option value='Most Recent'>Most Recent</option>
@@ -27,17 +32,19 @@ import ApplicationCreate from './Applications/ApplicationCreate';
 				</Form.Group>
 			</Form>
 
-			<Form id="search-form" onSubmit={handleSubmit}>
+			<Form id='search-form' onSubmit={handleSubmit}>
 				<Form.Label>Search Applications</Form.Label>
-				<div id="form-input-button">
-				<Form.Control
-					controlId='search-by-select'
-					type='text'
-					placeholder='Begin Typing to Search'
-				/>
-				<Button type='submit'>Search</Button>
-				{/* <Link to='applications/new'> */}
-				<Button onClick={handleShow}>New Application</Button>
+				<div id='form-input-button'>
+					<Form.Control
+						controlId='search-by-select'
+						type='text'
+						name='search-input'
+						onChange={(event) => setSearch(event.target.value)}
+						value={search}
+						required={true}
+						placeholder='Type to Refine Your Search'
+					/>
+				</div>
 				{/* </Link> */}
 			</Form>
 		</div>

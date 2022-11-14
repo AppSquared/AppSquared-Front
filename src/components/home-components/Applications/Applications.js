@@ -22,37 +22,8 @@ function Applications({ loggedIn, userInfo, applications }) {
 		event.preventDefault();
 		setSearch('');
 	}
-<<<<<<< HEAD
+
 	// SWITCH CASE
-=======
-
-	useEffect(() => {
-		getApplications();
-	}, []);
-
-	// 	GET ALL APPS
-	const getApplications = async (sort) => {
-		try {
-			setError(false);
-			const response = await fetch('http://localhost:8000/applications/');
-			if (response.status === 200) {
-				const data = await response.json();
-				setApplications(data);
-			} else {
-				setError(true);
-			}
-		} catch (error) {
-			setError(true);
-		}
-		return;
-	};
-
-
-	if (!error && !applications.length) {
-		return <div>No applications found.</div>;
-	}
-
->>>>>>> 38113db (Add search functionality. Add card class)
 	switch (type) {
 		case 'Most Recent':
 			const descArr = [...applications].map((obj) => {
@@ -91,17 +62,10 @@ function Applications({ loggedIn, userInfo, applications }) {
 			break;
 
 		case 'Default':
-<<<<<<< HEAD
 			if (search) {
 				filteredApps = applications.filter((application) => {
 					return application.notes.includes(search);
 				});
-=======
-			if(search){
-				filteredApps = applications.filter((application)=>{
-					return application.notes.includes(search)
-				})
->>>>>>> 38113db (Add search functionality. Add card class)
 			} else {
 				filteredApps = applications;
 			}
@@ -109,53 +73,28 @@ function Applications({ loggedIn, userInfo, applications }) {
 
 	let newAppList = filteredApps.map((application) => {
 		return (
-			<div className='card'>
-				<div>Current status: {application.status}</div>
-				<div>Created on: {application.date_logged}</div>
-				<div>Created by: {application.owner}</div>
-				<div>
-					<p>Notes:</p>
-					<p>{application.notes}</p>
-				</div>
-<<<<<<< HEAD
-				{/* <Link to={`contacts/${application.contacts[0].id}`}>
-											Contact(s)
-										</Link> */}
-				<div className='card-footer text-muted'>
-					Applied on: {application.date_applied}
-				</div>
-				{/* *DELETE*
+			<div className='card' key={application.id}>
+				<Link to={`/applications/${application.id}`}>
+					<div>
+						{application.job_title} @ {application.company_name}
+					</div>
+					<div>Current status: {application.status}</div>
+					<div>Applied on: {application.date_applied}</div>
 
-						{applications.map((application) => {
-							return (
-								<div key={application.id}>
-									<Link to={`/applications/${application.id}`}>
-										<div>
-											{application.job_title} @ {application.company_name}
-										</div>
-										<div>Current status: {application.status}</div>
-										<div>Applied on: {application.date_applied}</div>
-
-										<br />
-									</Link>
-									<p>
-										{/* <Link to={`contacts/${application.contacts[0].id}`}>
-											Contact(s)
-										</Link> */}
-=======
-				<Link to={application.application_url}>
-					Click here to view this app
+					<br />
 				</Link>
-				<div className='card-footer text-muted'>Applied on: {application.date_applied}</div>
-				{/* <div>{(position = application.position)}</div>
-							<div>{(company = application.company)}</div>
-							<div>{(additionalInfo = application.additionalInfo)}</div>
-							<div>{(pocName = application.pocName)}</div>
-							<div>{(pocNumber = application.pocNumber)}</div>
-							<div>{(pocEmail = application.pocEmail)}</div> */}
->>>>>>> 38113db (Add search functionality. Add card class)
-				<br />
 			</div>
+			
+			//  <Link to={`contacts/${application.contacts[0].id}`}>
+			// 								Contact(s)
+			// 							</Link>
+			// 	<div className='card-footer text-muted'>
+			// 		Applied on: {application.date_applied}
+			// 	</div>
+			// 					<p>
+			// 							<Link to={`contacts/${application.contacts[0].id}`}>
+			// 								Contact(s)
+			// 							</Link>
 		);
 	});
 
@@ -164,19 +103,13 @@ function Applications({ loggedIn, userInfo, applications }) {
 			{loggedIn && (
 				<Container>
 					<SearchApps
-<<<<<<< HEAD
 						// ADDED FOLLOWING PARAMS
-=======
->>>>>>> 38113db (Add search functionality. Add card class)
 						setType={setType}
 						setSearch={setSearch}
 						search={search}
 						handleSubmit={handleSubmit}
 					/>
-<<<<<<< HEAD
 
-=======
->>>>>>> 38113db (Add search functionality. Add card class)
 					<div id='feed-main-div'>
 						<h2>My Feed</h2>
 						<Button onClick={() => setShow(true)}>New Application</Button>

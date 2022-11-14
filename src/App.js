@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/static-components/Navbar';
 import Login from './components/login/login-signup/Login';
@@ -10,8 +8,8 @@ import ApplicationEdit from './components/home-components/Applications/Applicati
 import ContactDetails from './components/home-components/Contacts/ContactDetails';
 import ContactEdit from './components/home-components/Contacts/ContactEdit';
 import FooterBar from './components/static-components/Footer';
-import Applications from './components/home-components/Applications/Applications';
-
+import { useEffect, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
