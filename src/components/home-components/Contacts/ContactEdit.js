@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import EditContactForm from './Forms/EditContactForm';
 import useGetContact from './useGetContact';
 import { Form, Button, Alert } from 'react-bootstrap';
+import API_URL from '../../../apiConfig';
 
 function ContactEdit({ setShow }) {
 	const { id } = useParams();
@@ -14,7 +15,7 @@ function ContactEdit({ setShow }) {
 
 	const getContactDetail = async () => {
 		try {
-			const response = await fetch(`http://localhost:8000/contacts/${id}`);
+			const response = await fetch(`${API_URL}contacts/${id}`);
 			if (response.status === 200) {
 				const data = await response.json();
 				setFormValues(data);
@@ -32,7 +33,7 @@ function ContactEdit({ setShow }) {
 		e.preventDefault();
 		const formData = new FormData(e.target);
 		try {
-			const response = await fetch(`http://localhost:8000/contacts/${id}`, {
+			const response = await fetch(`${API_URL}contacts/${id}`, {
 				method: 'PUT',
 				body: formData,
 				headers: {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Applications from './Applications/Applications';
 import { Link } from 'react-router-dom';
+import API_URL from '../../apiConfig';
 
 function Home({ loggedIn, userInfo }) {
 	// const navigate = useNavigate();
@@ -10,7 +11,7 @@ function Home({ loggedIn, userInfo }) {
 	const getApplications = async () => {
 		try {
 			setError(false);
-			const response = await fetch('http://localhost:8000/applications/');
+			const response = await fetch(API_URL + 'applications/');
 			if (response.status === 200) {
 				const data = await response.json();
 				setApplications(data);

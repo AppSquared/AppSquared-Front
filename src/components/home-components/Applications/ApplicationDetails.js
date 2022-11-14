@@ -4,6 +4,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Container, Button, Modal } from 'react-bootstrap';
 import ApplicationEdit from './ApplicationEdit';
 import useGetApp from './useGetApp';
+import API_URL from '../../../apiConfig';
 
 function ApplicationDetails({ userInfo, loggedIn }) {
 	const navigate = useNavigate();
@@ -18,15 +19,12 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 
 		if (confirmDelete) {
 			try {
-				const response = await fetch(
-					`http://localhost:8000/applications/${id}`,
-					{
-						method: 'DELETE',
-						headers: {
-							Authorization: `Token ${localStorage.getItem('token')}`,
-						},
-					}
-				);
+				const response = await fetch(`${API_URL}applications/${id}`, {
+					method: 'DELETE',
+					headers: {
+						Authorization: `Token ${localStorage.getItem('token')}`,
+					},
+				});
 
 				if (response.status === 204) {
 					navigate('/');
@@ -80,7 +78,6 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 				</>
 			)}
 		</>
-
 	);
 }
 
