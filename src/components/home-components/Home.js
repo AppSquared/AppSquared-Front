@@ -34,7 +34,6 @@ function Home({ loggedIn, userInfo }) {
 		<>
 			{{ loggedIn } ? (
 				<div>
-					<h3>Home</h3>
 					<hr></hr>
 					<Applications
 						applications={applications}

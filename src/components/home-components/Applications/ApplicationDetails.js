@@ -40,7 +40,7 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 		return null;
 	}
 
-	///`/contacts/${applications.contacts[0].slice(-1)}`;
+	// console.log(`/contacts/${application.contacts[0].slice(-1)}`);
 	return (
 		<>
 			<h2>
@@ -50,9 +50,9 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 			<div>Applied on: {application.date_applied}</div>
 			<div>Created on: {application.date_logged}</div>
 			<div>Created by: {application.owner}</div>
-			<Link to={`/contacts/${application.contacts[0].slice(-1)}`}>
+			{/* <Link to={`/contacts/${application.contacts[0].slice(-1)}`}>
 				Contact(s)
-			</Link>
+			</Link> */}
 			<div>
 				<p>Notes:</p>
 				<p>{application.notes}</p>
