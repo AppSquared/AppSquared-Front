@@ -5,12 +5,6 @@ import { Container, Button, Modal } from 'react-bootstrap';
 import ApplicationEdit from './ApplicationEdit';
 import useGetApp from './useGetApp';
 
-/* NEED TO
--ADD ALL APPLICATION FIELDS
--MAKE MODAL IMPORT INFORMATION FROM THE APP
--SAVE FUNCTIONALITY
-*/
-
 function ApplicationDetails({ userInfo, loggedIn }) {
 	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
@@ -86,6 +80,7 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 				</>
 			)}
 		</>
+
 	);
 }
 

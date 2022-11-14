@@ -10,8 +10,8 @@ function Applications({ loggedIn, userInfo, applications }) {
 
 	// if an application has a contact[]
 	// if render <Link to={`contacts/${application.contacts[0].id}`}> Contact(s)</Link>
-
-	return (
+	
+  return (
 		<div>
 			{loggedIn && (
 				<Container>
@@ -43,7 +43,6 @@ function Applications({ loggedIn, userInfo, applications }) {
 										</div>
 										<div>Current status: {application.status}</div>
 										<div>Applied on: {application.date_applied}</div>
-
 										<br />
 									</Link>
 									<p>
@@ -51,6 +50,7 @@ function Applications({ loggedIn, userInfo, applications }) {
 											Contact(s)
 										</Link> */}
 									</p>
+
 								</div>
 							);
 						})}

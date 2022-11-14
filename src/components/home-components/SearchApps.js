@@ -4,12 +4,6 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ApplicationCreate from './Applications/ApplicationCreate';
 
-/*
-[] -REFATOR MODAL - maybe make it separate component?
-[] - Get request that allows you to search based on options put in drop down and text field
-[] - Post request for adding app
-*/
-
 function SearchApps() {
 	const [show, setShow] = useState(false);
 
