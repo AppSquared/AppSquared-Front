@@ -59,13 +59,14 @@ body{
 .test-div {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.381);
+  box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.68);
 }
 
 /* --------------------------------------------------------------------------------------- */
 
 /* NAV BAR */
 .navbar-container{
-  display: inline-flex;
+  display: flex;
   text-align: center;
 }
 
@@ -168,11 +169,6 @@ body{
   padding: 30px;
 }
 
-.footer-main-div{
-  height: 75px;
-  width: 100%;
-  background-color: #23d5ab;
-}
 /* --------------------------------------------- */
 /* SEARCH COMPONENTS */
 
@@ -183,7 +179,6 @@ body{
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #23a6d5;
 }
 
 #search-by-select {
@@ -239,4 +234,5 @@ height:40px
 }
 .card>div{
 width: 100%;
+
 }
