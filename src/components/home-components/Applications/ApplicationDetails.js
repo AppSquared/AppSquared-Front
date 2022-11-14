@@ -17,7 +17,6 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 	const { id } = useParams();
 	const application = useGetApp(id);
 
-	console.log(application);
 	const handleDelete = async (e) => {
 		const confirmDelete = window.confirm(
 			'Are you sure you want to delete this application?'
@@ -47,13 +46,19 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 		return null;
 	}
 
+	///`/contacts/${applications.contacts[0].slice(-1)}`;
 	return (
 		<>
-			<h1>details</h1>
+			<h2>
+				{application.job_title}@ {application.company_name} details
+			</h2>
 			<div>Current status: {application.status}</div>
 			<div>Applied on: {application.date_applied}</div>
 			<div>Created on: {application.date_logged}</div>
 			<div>Created by: {application.owner}</div>
+			<Link to={`/contacts/${application.contacts[0].slice(-1)}`}>
+				Contact(s)
+			</Link>
 			<div>
 				<p>Notes:</p>
 				<p>{application.notes}</p>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-function EditApplicationForm({
+function NewContactForm({
 	handleSubmit,
 	formValues,
 	handleChange,
@@ -12,33 +12,45 @@ function EditApplicationForm({
 	return (
 		<div>
 			<Form onSubmit={handleSubmit} encType='multipart/form-values'>
-				<Form.Group controlId='job-title'>
-					<Form.Label>Job Title</Form.Label>
+				<Form.Group controlId='application-id'>
+					<Form.Label></Form.Label>
+					<Form.Control
+						as='select'
+						autoFocus
+						value={type}
+						onChange={(e) => {
+							console.log('e.target.value, e.target.value');
+							setType(e.target.value);
+						}}>
+						<option value='Applied'>Applied</option>
+						<option value='Interviewed'>Interviewed</option>
+						<option value='Rejected'>Rejected</option>
+					</Form.Control>
+				</Form.Group>
+				<Form.Group controlId='title'>
+					<Form.Label>Title</Form.Label>
 					<Form.Control
 						required
-						autoFocus
 						type='text'
-						name='job_title'
+						name='title'
 						onChange={handleChange}
-						value={formValues.job_title}
+						value={formValues.title}
 					/>
 				</Form.Group>
-				<Form.Group controlId='company-name'>
-					<Form.Label>Company Name</Form.Label>
+				<Form.Group controlId='name'>
+					<Form.Label>Name</Form.Label>
 					<Form.Control
 						required
-						autoFocus
 						type='text'
-						name='company_name'
+						name='name'
 						onChange={handleChange}
-						value={formValues.company_name}
+						value={formValues.name}
 					/>
 				</Form.Group>
 				<Form.Group controlId='date-applied'>
 					<Form.Label>Date Applied</Form.Label>
 					<Form.Control
 						required
-						autoFocus
 						type='date'
 						name='date_applied'
 						onChange={handleChange}
@@ -85,4 +97,4 @@ function EditApplicationForm({
 	);
 }
 
-export default EditApplicationForm;
+export default NewContactForm;
