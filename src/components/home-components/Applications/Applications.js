@@ -160,7 +160,7 @@ function Applications({ loggedIn, userInfo, applications }) {
 	});
 
 	return (
-		<div>
+		<div className='test-div'>
 			{loggedIn && (
 				<Container>
 					<SearchApps

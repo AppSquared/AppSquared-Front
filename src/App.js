@@ -106,7 +106,7 @@ function App() {
 				/>
 				<Route path='/contacts/:id/edit' element={<ContactEdit />} />
 			</Routes>
-			<FooterBar />
+			{/* <FooterBar /> */}
 		</div>
 	);
 }
