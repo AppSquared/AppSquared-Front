@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NewApplicationForm from './Forms/NewApplicationForm';
+import API_URL from '../../../apiConfig';
 
 function ApplicationCreate({ setShow }) {
 	const initialApplicationValues = {
@@ -26,7 +27,7 @@ function ApplicationCreate({ setShow }) {
 		event.preventDefault();
 		const formValues = new FormData(event.target);
 		try {
-			const response = await fetch('http://localhost:8000/applications/', {
+			const response = await fetch(API_URL + 'applications/', {
 				method: 'POST',
 				body: formValues,
 				headers: {

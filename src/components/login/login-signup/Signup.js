@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
+import API_URL from '../../../apiConfig';
 
 function Signup() {
 	const initialFormValues = {
@@ -30,7 +31,7 @@ function Signup() {
 		setSignupErrors([]);
 
 		try {
-			const response = await fetch('http://localhost:8000/users/', {
+			const response = await fetch(API_URL + 'users/', {
 				method: 'POST',
 				body: JSON.stringify(formValues),
 				headers: {
@@ -116,7 +117,6 @@ function Signup() {
 						onChange={handleChange}
 						onBlur={handlePasswordMatch}
 						placeholder={'Confirm Password'}
-						
 					/>
 				</Form.Group>
 				<Button type='submit' disabled={error}>
