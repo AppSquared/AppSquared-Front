@@ -12,11 +12,31 @@ function NewApplicationForm({
 	return (
 		<div>
 			<Form onSubmit={handleSubmit} encType='multipart/form-values'>
+				<Form.Group controlId='job-title'>
+					<Form.Label>Job Title</Form.Label>
+					<Form.Control
+						required
+						autoFocus
+						type='text'
+						name='job_title'
+						onChange={handleChange}
+						value={formValues.job_title}
+					/>
+				</Form.Group>
+				<Form.Group controlId='company-name'>
+					<Form.Label>Company Name</Form.Label>
+					<Form.Control
+						required
+						type='text'
+						name='company_name'
+						onChange={handleChange}
+						value={formValues.company_name}
+					/>
+				</Form.Group>
 				<Form.Group controlId='date-applied'>
 					<Form.Label>Date Applied</Form.Label>
 					<Form.Control
 						required
-						autoFocus
 						type='date'
 						name='date_applied'
 						onChange={handleChange}

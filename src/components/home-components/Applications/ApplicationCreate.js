@@ -4,6 +4,8 @@ import NewApplicationForm from './Forms/NewApplicationForm';
 
 function ApplicationCreate({ setShow }) {
 	const initialApplicationValues = {
+		job_title: '',
+		company_name: '',
 		date_applied: '',
 		notes: '',
 		status: '',
