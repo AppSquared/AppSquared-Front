@@ -3,6 +3,10 @@ import Navbar from './components/static-components/Navbar';
 import Login from './components/login/login-signup/Login';
 import Signup from './components/login/login-signup/Signup';
 import Home from './components/home-components/Home';
+import ApplicationDetails from './components/home-components/Applications/ApplicationDetails';
+import ApplicationEdit from './components/home-components/Applications/ApplicationEdit';
+import ContactDetails from './components/home-components/Contacts/ContactDetails';
+import ContactEdit from './components/home-components/Contacts/ContactEdit';
 import FooterBar from './components/static-components/Footer';
 import { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
@@ -50,9 +54,6 @@ function App() {
 				setLoggedIn(false);
 				setUserInfo(null);
 				localStorage.removeItem('token');
-				// console.log(loggedIn);
-				// console.log(userInfo);
-				// console.log(localStorage);
 				navigate('/login');
 			}
 		} catch (error) {
@@ -90,20 +91,18 @@ function App() {
 					}
 				/>
 				<Route path='/signup' element={<Signup />} />
-				{/* 
-				<Route path='/applications' element={<Applications />} />
-				<Route
-					path='/applications/new'
-					element={ApplicationCreate}
-					loggedIn={loggedIn}
-				/>
 				<Route
 					path='/applications/:id'
 					element={
-						<ApplicationDetail userInfo={userInfo} loggedIn={loggedIn} />
+						<ApplicationDetails userInfo={userInfo} loggedIn={loggedIn} />
 					}
 				/>
-				<Route path='/applications/:id/edit' element={ApplicationEdit} /> */}
+				<Route path='/applications/:id/edit' element={<ApplicationEdit />} />
+				<Route
+					path='/contacts/:id'
+					element={<ContactDetails userInfo={userInfo} loggedIn={loggedIn} />}
+				/>
+				<Route path='/contacts/:id/edit' element={<ContactEdit />} />
 			</Routes>
 			<FooterBar />
 		</div>

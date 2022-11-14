@@ -45,10 +45,10 @@ function Login({ handleSetLoggedIn }) {
 
 	return (
 		<div id='login-main-div'>
-			<h1>Login</h1>
+			<h2 id='login-title'>App Squared</h2>
 			<Form id='login-form' onSubmit={handleLogIn}>
 				<Form.Group controlId='email'>
-					<Form.Label>Email</Form.Label>
+					{/* <Form.Label>Email</Form.Label> */}
 					<Form.Control
 						required
 						autoFocus
@@ -59,6 +59,7 @@ function Login({ handleSetLoggedIn }) {
 						onChange={handleChange}
 					/>
 				</Form.Group>
+				{/* <Form.Label>Password</Form.Label> */}
 				<Form.Group controlId='password'>
 					<Form.Label>Password</Form.Label>
 					<Form.Control
@@ -70,7 +71,9 @@ function Login({ handleSetLoggedIn }) {
 						onChange={handleChange}
 					/>
 				</Form.Group>
-				<Button type='submit'>Log In</Button>
+				<Button id='login-button' type='submit'>
+					Log In
+				</Button>
 			</Form>
 			{error && (
 				<Alert variant='warning'>

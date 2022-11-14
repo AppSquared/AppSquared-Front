@@ -66,11 +66,11 @@ function Signup() {
 	};
 
 	return (
-		<div className='hide' id='login-main-div'>
-			<h1>Sign Up</h1>
+		<div className='hide' id='signup-main-div'>
+			<h2 id='signup-title'>App Squared</h2>
 			<Form onSubmit={handleSubmit} id='signup-form'>
 				<Form.Group controlId='username'>
-					<Form.Label>Username</Form.Label>
+					{/* <Form.Label>Username</Form.Label> */}
 					<Form.Control
 						required
 						autoFocus
@@ -78,33 +78,36 @@ function Signup() {
 						name='username'
 						value={formValues.username}
 						onChange={handleChange}
+						placeholder={'Username'}
 					/>
 				</Form.Group>
 				<Form.Group controlId='formBasicEmail'>
-					<Form.Label>Email</Form.Label>
+					{/* <Form.Label>Email</Form.Label> */}
 					<Form.Control
 						required
 						type='email'
 						name='email'
 						value={formValues.email}
 						onChange={handleChange}
+						placeholder={'Email'}
 					/>
 					<Form.Control.Feedback type='invalid'>
 						Please provide a valid email .
 					</Form.Control.Feedback>
 				</Form.Group>
 				<Form.Group controlId='password'>
-					<Form.Label>Password</Form.Label>
+					{/* <Form.Label>Password</Form.Label> */}
 					<Form.Control
 						required
 						type='password'
 						name='password'
 						defaultValue={formValues.password}
 						onChange={handleChange}
+						placeholder={'Password'}
 					/>
 				</Form.Group>
 				<Form.Group controlId='re_password'>
-					<Form.Label>Confirm Password</Form.Label>
+					{/* <Form.Label>Confirm Password</Form.Label> */}
 					<Form.Control
 						required
 						type='password'
@@ -112,6 +115,8 @@ function Signup() {
 						defaultValue={formValues.re_password}
 						onChange={handleChange}
 						onBlur={handlePasswordMatch}
+						placeholder={'Confirm Password'}
+						
 					/>
 				</Form.Group>
 				<Button type='submit' disabled={error}>
