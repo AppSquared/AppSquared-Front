@@ -29,14 +29,14 @@ function SearchApps() {
 				</Form.Group>
 			</Form>
 
-			<form>
-				<input
-					id='search-by-select'
+			<Form>
+				<Form.Label>Search Applications</Form.Label>
+				<Form.Control
+					controlId='search-by-select'
 					type='text'
 					placeholder='Leave Blank if you wish to search your specified field for ALL options'
 				/>
-				<button type='submit'>Search</button>
-			</form>
+			</Form>
 		</div>
 	);
 }
