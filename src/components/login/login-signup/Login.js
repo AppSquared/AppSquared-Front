@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
+import API_URL from '../../../apiConfig';
 
 function Login({ handleSetLoggedIn }) {
 	const initialFormValues = {
@@ -22,7 +23,7 @@ function Login({ handleSetLoggedIn }) {
 		e.preventDefault();
 		setError(false);
 		try {
-			const response = await fetch('http://localhost:8000/token/login', {
+			const response = await fetch(API_URL + 'token/login', {
 				method: 'POST',
 				body: JSON.stringify(formValues),
 				headers: {

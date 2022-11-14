@@ -10,6 +10,7 @@ import ContactEdit from './components/home-components/Contacts/ContactEdit';
 import FooterBar from './components/static-components/Footer';
 import { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import API_URL from './apiConfig';
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -24,7 +25,7 @@ function App() {
 
 	const getUserInfo = async () => {
 		try {
-			const response = await fetch('http://localhost:8000/users/me/', {
+			const response = await fetch(API_URL + 'users/me/', {
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
@@ -40,7 +41,7 @@ function App() {
 
 	const handleLogout = async () => {
 		try {
-			let response = await fetch('http://localhost:8000/token/logout/', {
+			let response = await fetch(API_URL + 'token/logout/', {
 				method: 'POST',
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,

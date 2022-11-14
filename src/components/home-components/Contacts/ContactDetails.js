@@ -4,6 +4,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Container, Button, Modal } from 'react-bootstrap';
 import ContactEdit from './ContactEdit';
 import useGetContact from './useGetContact';
+import API_URL from '../../../apiConfig';
 
 function ContactDetails({ userInfo, loggedIn }) {
 	const navigate = useNavigate();
@@ -18,7 +19,7 @@ function ContactDetails({ userInfo, loggedIn }) {
 
 		if (confirmDelete) {
 			try {
-				const response = await fetch(`http://localhost:8000/contacts/${id}`, {
+				const response = await fetch(`${API_URL}contacts/${id}`, {
 					method: 'DELETE',
 					headers: {
 						Authorization: `Token ${localStorage.getItem('token')}`,

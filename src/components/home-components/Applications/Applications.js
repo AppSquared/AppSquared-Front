@@ -84,7 +84,7 @@ function Applications({ loggedIn, userInfo, applications }) {
 					<br />
 				</Link>
 			</div>
-			
+
 			//  <Link to={`contacts/${application.contacts[0].id}`}>
 			// 								Contact(s)
 			// 							</Link>

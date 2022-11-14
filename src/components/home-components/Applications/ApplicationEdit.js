@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import EditApplicationForm from './Forms/EditApplicationForm';
 import useGetApp from './useGetApp';
 import { Form, Button, Alert } from 'react-bootstrap';
+import API_URL from '../../../apiConfig';
 
 function ApplicationEdit({ setShow }) {
 	const { id } = useParams();
@@ -14,7 +15,7 @@ function ApplicationEdit({ setShow }) {
 
 	const getApplicationDetail = async () => {
 		try {
-			const response = await fetch(`http://localhost:8000/applications/${id}`);
+			const response = await fetch(`${API_URL}applications/${id}`);
 			if (response.status === 200) {
 				const data = await response.json();
 				setFormValues(data);
@@ -32,7 +33,7 @@ function ApplicationEdit({ setShow }) {
 		e.preventDefault();
 		const formData = new FormData(e.target);
 		try {
-			const response = await fetch(`http://localhost:8000/applications/${id}`, {
+			const response = await fetch(`${API_URL}applications/${id}`, {
 				method: 'PUT',
 				body: formData,
 				headers: {
