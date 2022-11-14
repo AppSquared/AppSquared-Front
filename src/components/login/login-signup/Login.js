@@ -61,7 +61,7 @@ function Login({ handleSetLoggedIn }) {
 				</Form.Group>
 				{/* <Form.Label>Password</Form.Label> */}
 				<Form.Group controlId='password'>
-					<Form.Label>Password</Form.Label>
+					{/* <Form.Label>Password</Form.Label> */}
 					<Form.Control
 						required
 						type='password'
