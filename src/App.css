@@ -1,17 +1,20 @@
 /* FONT IMPORT */
 @font-face {
-  font-family: NeonLED;
-  src: url('./assets/fonts/NEONLEDLight.otf');
-}
-
-@font-face {
   font-family: Bangers;
   src: url('./assets/fonts/Bangers-Regular.ttf');
+}
+@font-face {
+  font-family: LocalBrewery;
+  src: url('./assets/fonts/LocalBrewerySans.ttf');
 }
 
 * {
   margin: 0 auto;
   text-align: center;
+  font-family: Bangers;
+}
+*>a:hover{
+  color: #a90000;
 }
 
 html {
@@ -33,6 +36,15 @@ body {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+  background-attachment: fixed;
+}
+
+h1{
+  font-family: bangers;
+}
+
+h1>a{
+  text-decoration: none;
 }
 
 @keyframes gradient {
@@ -172,7 +184,7 @@ body {
   height: 500px;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.381);
-  margin: 40px auto;
+  margin: auto;
   border-radius: 30px;
   box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.68);
 }
@@ -312,27 +324,38 @@ body {
     margin: auto;
   }
   .card{
-    width: 80%;
+    width: 70%;
   }
   .card>div{
-    width: 80%;
+    width: 70%;
   }
+    #appDetails{
+      width: 400px;
+    }
   }
 
 /* ----------------------------------------------------- */
 /* CARDS */
 
 .card {
-  width: 400px;
+  width: 500px;
+  padding: 20px;
   display: flex;
   margin: 20px auto;
+  box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.68);
+}
+
+.card>div{
+  margin: 10px;
 }
 
 .card>div {
   width: 100%;
-
 }
 
+div>a{
+  text-decoration: none;
+}
 /* ----------------------------------------------------- */
 /* APP DETAILS CARDS */
 
@@ -345,8 +368,9 @@ body {
   padding: 20px;
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: rgba(255, 255, 255, 0.381);
-  box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.68);
+  background-color: rgba(255, 255, 255, 0.626);
+  box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, .68);
+  border-radius: 30px;
 }
 
 .appD2, h5 {

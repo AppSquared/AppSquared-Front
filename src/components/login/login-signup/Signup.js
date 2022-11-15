@@ -42,7 +42,7 @@ function Signup() {
 			if (response.status === 201) {
 				setSuccess(true);
 				setTimeout(() => {
-					navigate('/login');
+					navigate('/');
 				}, 3000);
 			} else {
 				const data = await response.json();
