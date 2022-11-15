@@ -69,6 +69,18 @@ body {
 .navbar-container {
   display: flex;
   text-align: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#user-info-p {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  margin: auto;
 }
 
 /* Position and sizing of burger button */
@@ -106,6 +118,7 @@ body {
 .bm-menu-wrap {
   position: absolute;
   height: 100vh;
+  top: 0;
 }
 
 /* General sidebar styles */
@@ -177,26 +190,25 @@ body {
 
 #search-main-div {
   margin: 0 auto;
-  width: 85vw;
+  width: 100%;
   height: 100px;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 #search-by-select {
-  width: 200px;
-
+  width: 400px;
 }
 
 #search-form {
-  display: flex;
   flex-direction: column;
+  width:70%;
+
 }
 
 #form-input-button {
   display: inline-flex;
-  height: 40px
+  height: 40px;
 }
 
 #add-app {
@@ -222,15 +234,90 @@ body {
   flex-direction: column;
 }
 
-/* MOBILE MEDIA QUERY */
-@media screen and (max-width: 480px) {
+#new-application-button{
+  margin: auto;
+  width: 200px;
+}
 
+/* ----------------------------------------------------- */
+
+/* MOBILE MEDIA QUERY */
+@media screen and (max-width: 800px) {
+  html{
+    width: 100%;
+  }
+  body{
+    width: 100%;
+  }
   #login-main-div,
   #signup-main-div {
     background-color: rgba(255, 255, 255, 0);
     box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0);
   }
-}
+  .test-div {
+    height: 100%;
+    width: 100%;
+    background-color: none;
+    box-shadow:none;
+  }
+
+  /* MENU */
+  .bm-burger-button {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    left: 80%;
+    right: 0px;
+  }
+
+  /* NAVBAR */
+  .navbar-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  #user-info-p{
+    width: 100%;
+    margin: auto;
+    position: relative;
+    top:20px;
+  }
+
+  /* SEARCH */
+  #search-main-div{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+  }
+
+  #search-form {
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  }
+  #search-by-select{
+    width: 80%;
+    margin: auto;
+  }
+
+  #drop-down{
+    width: 60%;
+    margin: auto;
+  }
+
+  #applications-container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+  .card{
+    width: 80%;
+  }
+  .card>div{
+    width: 80%;
+  }
+  }
 
 /* ----------------------------------------------------- */
 /* CARDS */
@@ -244,4 +331,37 @@ body {
 .card>div {
   width: 100%;
 
+}
+
+/* ----------------------------------------------------- */
+/* APP DETAILS CARDS */
+
+#appDetails {
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: rgba(255, 255, 255, 0.381);
+  box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.68);
+}
+
+.appD2, h5 {
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+  margin-top: 10px;
+}
+
+
+.notes {
+  margin-top: 25px;
+}
+
+.appD2, h5{
+  width: 100%;
+  /* margin-left: 40px; */
 }
