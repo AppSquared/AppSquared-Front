@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react';
-import Applications from './Applications/Applications';
-import { Link } from 'react-router-dom';
-import API_URL from '../../apiConfig';
 import { Button, Modal } from 'react-bootstrap';
-import ApplicationCreate from './Applications/ApplicationCreate';
 import { useNavigate } from 'react-router-dom';
+import Applications from './Applications/Applications';
+import ApplicationCreate from './Applications/ApplicationCreate';
+import API_URL from '../../apiConfig';
 
 function Home({ loggedIn, userInfo }) {
 	const navigate = useNavigate();
 	const [applications, setApplications] = useState([]);
 	const [error, setError] = useState(false);
 	const [show, setShow] = useState(false);
-
 
 	const getApplications = async () => {
 		try {
@@ -45,6 +43,7 @@ function Home({ loggedIn, userInfo }) {
 	if (!error && !applications.length) {
 		return <div>No applications found.</div>;
 	}
+
 	function renderApplications() {
 		if (!loggedIn) {
 			navigate('/login');
@@ -59,8 +58,9 @@ function Home({ loggedIn, userInfo }) {
 						</Modal.Header>
 						<Modal.Body>
 							<ApplicationCreate
-							getApplications={getApplications}
-							setShow={setShow} />
+								getApplications={getApplications}
+								setShow={setShow}
+							/>
 						</Modal.Body>
 						<Modal.Footer>
 							<Button variant='secondary' onClick={() => setShow(false)}>

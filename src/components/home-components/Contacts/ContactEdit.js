@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import EditContactForm from './Forms/EditContactForm';
+import ContactForm from './ContactForm';
 import useGetContact from './useGetContact';
-import { Form, Button, Alert } from 'react-bootstrap';
 import API_URL from '../../../apiConfig';
 
 function ContactEdit({ setShow }) {
@@ -59,8 +58,13 @@ function ContactEdit({ setShow }) {
 
 	return (
 		<div>
-			<div>
-				<Form onSubmit={handleSubmit} encType='multipart/form-values'>
+			<ContactForm
+				setShow={setShow}
+				handleSubmit={handleSubmit}
+				handleChange={handleChange}
+				formValues={formValues}
+			/>
+			{/* <Form onSubmit={handleSubmit} encType='multipart/form-values'>
 					<Form.Group controlId='date-applied'>
 						<Form.Label>Date Applied</Form.Label>
 						<Form.Control
@@ -107,8 +111,7 @@ function ContactEdit({ setShow }) {
 						Submit
 					</Button>
 					{error && <Alert variant='danger'>Oops, please try again</Alert>}
-				</Form>
-			</div>
+				</Form> */}
 		</div>
 	);
 }

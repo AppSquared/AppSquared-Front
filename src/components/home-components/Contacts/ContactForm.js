@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-function EditContactForm({
+function ContactForm({
 	handleSubmit,
 	formValues,
 	handleChange,
@@ -12,37 +12,45 @@ function EditContactForm({
 	return (
 		<div>
 			<Form onSubmit={handleSubmit} encType='multipart/form-values'>
-				<Form.Group controlId='job-title'>
-					<Form.Label>Job Title</Form.Label>
+				<Form.Group controlId='name'>
+					<Form.Label>Name</Form.Label>
 					<Form.Control
 						required
 						autoFocus
 						type='text'
-						name='job_title'
+						name='name'
 						onChange={handleChange}
-						value={formValues.job_title}
+						value={formValues.name}
 					/>
 				</Form.Group>
-				<Form.Group controlId='company-name'>
+				<Form.Group controlId='title'>
 					<Form.Label>Company Name</Form.Label>
 					<Form.Control
 						required
-						autoFocus
 						type='text'
-						name='company_name'
+						name='title'
 						onChange={handleChange}
-						value={formValues.company_name}
+						value={formValues.title}
 					/>
 				</Form.Group>
-				<Form.Group controlId='date-applied'>
-					<Form.Label>Date Applied</Form.Label>
+				<Form.Group controlId='email'>
+					<Form.Label>Email</Form.Label>
 					<Form.Control
 						required
-						autoFocus
-						type='date'
-						name='date_applied'
+						type='email'
+						name='email'
 						onChange={handleChange}
-						value={formValues.date_applied}
+						value={formValues.email}
+					/>
+				</Form.Group>
+				<Form.Group controlId='phone-number'>
+					<Form.Label>Phone number</Form.Label>
+					<Form.Control
+						required
+						type='text'
+						name='phone_number'
+						onChange={handleChange}
+						value={formValues.phone_number}
 					/>
 				</Form.Group>
 				<Form.Group controlId='notes'>
@@ -52,22 +60,8 @@ function EditContactForm({
 						type='text'
 						name='notes'
 						onChange={handleChange}
-						valueAsDate={formValues.notes}
+						value={formValues.notes}
 					/>
-				</Form.Group>
-				<Form.Group controlId='status'>
-					<Form.Label>Status</Form.Label>
-					<Form.Control
-						as='select'
-						value={type}
-						onChange={(e) => {
-							console.log('e.target.value, e.target.value');
-							setType(e.target.value);
-						}}>
-						<option value='Applied'>Applied</option>
-						<option value='Interviewed'>Interviewed</option>
-						<option value='Rejected'>Rejected</option>
-					</Form.Control>
 				</Form.Group>
 
 				<Button
@@ -85,4 +79,4 @@ function EditContactForm({
 	);
 }
 
-export default EditContactForm;
+export default ContactForm;
