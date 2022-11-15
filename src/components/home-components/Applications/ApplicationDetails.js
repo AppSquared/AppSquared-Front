@@ -39,42 +39,67 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 	}
 	// const contactLink = application.contacts[0].slice(-1);
 	return (
-		<>
-			{/* {userInfo && userInfo.username === application.owner && ( */}
+		<div id='appDetails'>
 			<h2>
 				{application.job_title}@ {application.company_name} details
 			</h2>
-			<div>Current status: {application.status}</div>
-			<div>Applied on: {application.date_applied}</div>
-			<div>Created on: {application.date_logged}</div>
-			<div>Created by: {application.owner}</div>
-			{/* <Link to={`/contacts/${contactLink}`}>Contact(s)</Link> */}
-			<div>
-				<p>Notes:</p>
-				<p>{application.notes}</p>
+
+			<div className='appD2'>
+				<h5>
+					Current status: <em>{application.status}</em>
+				</h5>
 			</div>
 
-			<>
-				<Button onClick={() => setShow(true)}>Edit</Button>
-				<Modal show={show} onHide={() => setShow(false)}>
-					<Modal.Header>
-						<Modal.Title>Edit Application</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						<ApplicationEdit setShow={setShow} handleDelete={handleDelete} />
-					</Modal.Body>
-					<Modal.Footer>
-						<Button onClick={handleDelete} variant='danger'>
-							Delete
-						</Button>
-						<Button variant='secondary' onClick={() => setShow(false)}>
-							Close
-						</Button>
-					</Modal.Footer>
-				</Modal>
-			</>
-			{/* )} */}
-		</>
+			<div className='appD2'>
+				<h5>
+					Applied on: <em>{application.date_applied}</em>
+				</h5>
+			</div>
+
+			<div className='appD2'>
+				<h5>
+					Created on: <em>{application.date_logged}</em>
+				</h5>
+			</div>
+
+			<div className='appD2'>
+				<h5>
+					Created by: <em>{application.owner}</em>
+				</h5>
+			</div>
+
+			{/* <Link to={`/contacts/${application.contacts[0].slice(-1)}`}>
+				Contact(s)
+			</Link> */}
+			<div className='notes'>
+				<h5>
+					<p>Notes:</p>
+					<p>{application.notes}</p>
+				</h5>
+			</div>
+
+			{userInfo && userInfo.username === application.owner && (
+				<>
+					<Button onClick={() => setShow(true)}>Edit</Button>
+					<Modal show={show} onHide={() => setShow(false)}>
+						<Modal.Header>
+							<Modal.Title>Edit Application</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>
+							<ApplicationEdit setShow={setShow} handleDelete={handleDelete} />
+						</Modal.Body>
+						<Modal.Footer>
+							<Button onClick={handleDelete} variant='danger'>
+								Delete
+							</Button>
+							<Button variant='secondary' onClick={() => setShow(false)}>
+								Close
+							</Button>
+						</Modal.Footer>
+					</Modal>
+				</>
+			)}
+		</div>
 	);
 }
 
