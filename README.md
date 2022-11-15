@@ -27,7 +27,7 @@ App Squared is a Job Application tracking app, where users input information abo
 
 # Installation instructions
 
-- Go to the website: https://app-squared.netlify.app/
+- Go to the website: https://app-squared.netlify.app/login
 - Click on the Menu and Sign Up (If you've signed up already, Click on Log In)
 - Input your info and Log In
 - On Applications page you can add/edit your application
