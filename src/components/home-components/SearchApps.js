@@ -14,9 +14,10 @@ function SearchApps({ setType, setSearch, search, handleSubmit }) {
 	return (
 		<div id='search-main-div'>
 			<Form>
-				<Form.Group controlId='dropdown'>
+				<Form.Group controlid='dropdown'>
 					<Form.Label>Sort Feed By: </Form.Label>
 					<Form.Control
+						controlid='drop-down'
 						as='select'
 						defaultValue={'Default'}
 						onChange={(e) => {
@@ -32,11 +33,12 @@ function SearchApps({ setType, setSearch, search, handleSubmit }) {
 				</Form.Group>
 			</Form>
 
-			<Form id='search-form' onSubmit={handleSubmit}>
+			<Form id='search-form' className="" onSubmit={handleSubmit}>
 				<Form.Label>Search Applications</Form.Label>
 				<div id='form-input-button'>
 					<Form.Control
-						controlId='search-by-select'
+						controlid='search-by-select'
+						id='search-by-select'
 						type='text'
 						name='search-input'
 						onChange={(event) => setSearch(event.target.value)}

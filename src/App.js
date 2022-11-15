@@ -49,9 +49,6 @@ function App() {
 			});
 
 			if (response.status === 204) {
-				// console.log(loggedIn);
-				// console.log(userInfo);
-				// console.log(localStorage);
 				setLoggedIn(false);
 				setUserInfo(null);
 				localStorage.removeItem('token');
@@ -72,16 +69,20 @@ function App() {
 
 	return (
 		<div className='App'>
-			<Navbar
-				loggedIn={loggedIn}
-				handleLogout={handleLogout}
-				userInfo={userInfo}
-			/>
+			{loggedIn && (
+				<Navbar
+					loggedIn={loggedIn}
+					handleLogout={handleLogout}
+					userInfo={userInfo}
+				/>
+			)
+		}
 			<Routes>
 				<Route
 					path='/'
 					element={<Home userInfo={userInfo} loggedIn={loggedIn} />}
 				/>
+
 				<Route
 					path='/login'
 					element={
