@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
+import Login from './Login';
 import API_URL from '../../../apiConfig';
 
 function Signup() {
@@ -122,6 +123,10 @@ function Signup() {
 				<Button type='submit' disabled={error}>
 					Create Account
 				</Button>
+				<div>Already signed up?</div>
+				<Link to='/login' element={<Login />}>
+					<div>Click here to login!</div>
+				</Link>
 
 				{error && <Alert variant='danger'>Passwords do not match.</Alert>}
 				{success && (
