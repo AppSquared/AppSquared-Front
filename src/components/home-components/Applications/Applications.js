@@ -36,7 +36,13 @@ function Applications({ loggedIn, userInfo, applications, getApplications }) {
 			);
 			if (search) {
 				filteredApps = applications.filter((application) => {
-					return application.notes.includes(search);
+					return (
+						application.job_title
+							.toLowerCase()
+							.includes(search.toLowerCase()) ||
+						application.notes.toLowerCase().includes(search) ||
+						application.company_name.toLowerCase().includes(search)
+					);
 				});
 			}
 			break;
@@ -50,7 +56,13 @@ function Applications({ loggedIn, userInfo, applications, getApplications }) {
 			);
 			if (search) {
 				filteredApps = applications.filter((application) => {
-					return application.notes.includes(search);
+					return (
+						application.job_title
+							.toLowerCase()
+							.includes(search.toLowerCase()) ||
+						application.notes.toLowerCase().includes(search) ||
+						application.company_name.toLowerCase().includes(search)
+					);
 				});
 			}
 			break;
@@ -61,7 +73,13 @@ function Applications({ loggedIn, userInfo, applications, getApplications }) {
 			);
 			if (search) {
 				filteredApps = applications.filter((application) => {
-					return application.notes.includes(search);
+					return (
+						application.job_title
+							.toLowerCase()
+							.includes(search.toLowerCase()) ||
+						application.notes.toLowerCase().includes(search) ||
+						application.company_name.toLowerCase().includes(search)
+					);
 				});
 			}
 			break;
@@ -72,7 +90,13 @@ function Applications({ loggedIn, userInfo, applications, getApplications }) {
 			);
 			if (search) {
 				filteredApps = applications.filter((application) => {
-					return application.notes.includes(search);
+					return (
+						application.job_title
+							.toLowerCase()
+							.includes(search.toLowerCase()) ||
+						application.notes.toLowerCase().includes(search) ||
+						application.company_name.toLowerCase().includes(search)
+					);
 				});
 			}
 			break;
@@ -83,7 +107,13 @@ function Applications({ loggedIn, userInfo, applications, getApplications }) {
 			);
 			if (search) {
 				filteredApps = applications.filter((application) => {
-					return application.notes.includes(search);
+					return (
+						application.job_title
+							.toLowerCase()
+							.includes(search.toLowerCase()) ||
+						application.notes.toLowerCase().includes(search) ||
+						application.company_name.toLowerCase().includes(search)
+					);
 				});
 			}
 			break;
@@ -91,7 +121,13 @@ function Applications({ loggedIn, userInfo, applications, getApplications }) {
 		case 'Default':
 			if (search) {
 				filteredApps = applications.filter((application) => {
-					return application.notes.includes(search);
+					return (
+						application.job_title
+							.toLowerCase()
+							.includes(search.toLowerCase()) ||
+						application.notes.toLowerCase().includes(search) ||
+						application.company_name.toLowerCase().includes(search)
+					);
 				});
 			} else {
 				filteredApps = applications;

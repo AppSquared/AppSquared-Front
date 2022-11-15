@@ -47,7 +47,8 @@ function ApplicationForm({
 					<Form.Label>Notes</Form.Label>
 					<Form.Control
 						required
-						type='text'
+						type='textarea'
+						as='textarea'
 						name='notes'
 						onChange={handleChange}
 						value={formValues.notes}
