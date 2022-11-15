@@ -9,6 +9,7 @@ export default function useGetApp(id) {
 			const response = await fetch(`${API_URL}applications/${id}`);
 			if (response.status === 200) {
 				const data = await response.json();
+				console.log(data);
 				setApplication(data);
 			}
 		} catch (err) {

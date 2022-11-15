@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Container, Button, Modal } from 'react-bootstrap';
 import ContactEdit from './ContactEdit';
+import ContactCreate from './ContactCreate';
 import useGetContact from './useGetContact';
 import API_URL from '../../../apiConfig';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ContactDetails({ userInfo, loggedIn }) {
 	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
 	const { id } = useParams();
 	const contact = useGetContact(id);
+	const [showContactForm, setShowContactForm] = useState(false);
 
 	const handleDelete = async (e) => {
 		const confirmDelete = window.confirm(
@@ -39,11 +41,10 @@ function ContactDetails({ userInfo, loggedIn }) {
 	}
 
 	return (
-		<>
-			<h2>
-				{contact.name}, {contact.title}
-			</h2>
-			<h3>Contact for: {contact.application_id}</h3>
+		<div id='appDetails'>
+			<h2>{contact.name}</h2>
+			<h3>{contact.title}</h3>
+			{/* <h3>Contact to/for: {contact.application.self}</h3> */}
 			<div>Email: {contact.email}</div>
 			<div>Phone number: {contact.phone_number}</div>
 			<div>
@@ -52,26 +53,53 @@ function ContactDetails({ userInfo, loggedIn }) {
 			</div>
 			{/* {userInfo && userInfo.username === application.owner && ( */}
 			<>
-				<Button onClick={() => setShow(true)}>Edit</Button>
-				<Modal show={show} onHide={() => setShow(false)}>
-					<Modal.Header>
-						<Modal.Title>Edit Contact</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						<ContactEdit setShow={setShow} handleDelete={handleDelete} />
-					</Modal.Body>
-					<Modal.Footer>
-						<Button onClick={handleDelete} variant='danger'>
-							Delete
-						</Button>
-						<Button variant='secondary' onClick={() => setShow(false)}>
-							Close
-						</Button>
-					</Modal.Footer>
-				</Modal>
+				<div>
+					<Button onClick={() => setShow(true)}>Edit</Button>
+					<Modal show={show} onHide={() => setShow(false)}>
+						<Modal.Header>
+							<Modal.Title>Edit Contact</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>
+							<ContactEdit setShow={setShow} handleDelete={handleDelete} />
+						</Modal.Body>
+						<Modal.Footer>
+							<Button onClick={handleDelete} variant='danger'>
+								Delete
+							</Button>
+							<Button variant='secondary' onClick={() => setShow(false)}>
+								Close
+							</Button>
+						</Modal.Footer>
+					</Modal>
+				</div>
+				<div>
+					<Button onClick={() => setShowContactForm(true)}>
+						Add a new contact
+					</Button>
+					<Modal
+						show={showContactForm}
+						onHide={() => setShowContactForm(false)}>
+						<Modal.Header>
+							<Modal.Title>Add a Contact</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>
+							<ContactCreate
+								setShow={setShowContactForm}
+								handleDelete={handleDelete}
+							/>
+						</Modal.Body>
+						<Modal.Footer>
+							<Button
+								variant='secondary'
+								onClick={() => setShowContactForm(false)}>
+								Close
+							</Button>
+						</Modal.Footer>
+					</Modal>
+				</div>
 			</>
 			{/* )} */}
-		</>
+		</div>
 	);
 }
 

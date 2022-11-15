@@ -4,13 +4,16 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Container, Button, Modal } from 'react-bootstrap';
 import ApplicationEdit from './ApplicationEdit';
 import useGetApp from './useGetApp';
+import useGetContact from '../Contacts/useGetContact';
 import API_URL from '../../../apiConfig';
 
 function ApplicationDetails({ userInfo, loggedIn }) {
 	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
+	const [showContactForm, setShowContactForm] = useState(false);
 	const { id } = useParams();
 	const application = useGetApp(id);
+	const contact = useGetContact(1);
 
 	const handleDelete = async (e) => {
 		const confirmDelete = window.confirm(
@@ -37,7 +40,6 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 	if (!application) {
 		return null;
 	}
-	// const contactLink = application.contacts[0].slice(-1);
 	return (
 		<div id='appDetails'>
 			<h2>
@@ -68,9 +70,11 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 				</h5>
 			</div>
 
-			{/* <Link to={`/contacts/${application.contacts[0].slice(-1)}`}>
-				Contact(s)
-			</Link> */}
+			<div className=''>
+				<Link to={`/contacts/1`}>
+					<h5>View Contact(s)</h5>
+				</Link>
+			</div>
 			<div className='notes'>
 				<h5>
 					<p>Notes:</p>
@@ -80,25 +84,52 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 
 			{userInfo && userInfo.username === application.owner && (
 				<>
-					<Button onClick={() => setShow(true)}>Edit</Button>
-					<Modal show={show} onHide={() => setShow(false)}>
-						<Modal.Header>
-							<Modal.Title>Edit Application</Modal.Title>
-						</Modal.Header>
-						<Modal.Body>
-							<ApplicationEdit setShow={setShow} handleDelete={handleDelete} />
-						</Modal.Body>
-						<Modal.Footer>
-							<Button onClick={handleDelete} variant='danger'>
-								Delete
-							</Button>
-							<Button variant='secondary' onClick={() => setShow(false)}>
-								Close
-							</Button>
-						</Modal.Footer>
-					</Modal>
+					<div>
+						<Button onClick={() => setShow(true)}>Edit this application</Button>
+						<Modal show={show} onHide={() => setShow(false)}>
+							<Modal.Header>
+								<Modal.Title>Edit Application</Modal.Title>
+							</Modal.Header>
+							<Modal.Body>
+								<ApplicationEdit
+									setShow={setShow}
+									handleDelete={handleDelete}
+								/>
+							</Modal.Body>
+							<Modal.Footer>
+								<Button onClick={handleDelete} variant='danger'>
+									Delete
+								</Button>
+								<Button variant='secondary' onClick={() => setShow(false)}>
+									Close
+								</Button>
+							</Modal.Footer>
+						</Modal>
+					</div>
 				</>
 			)}
+			{/*{!application.contacts.length && <p>No Contacts Found</p>}
+			{loggedIn && <Button>New Contact</Button>}
+			{application.contacts.length > 0 &&
+				application.contacts.map((contact) => {
+					return (
+						<div className='appD2' key={contact.id}>
+							<h4>
+								{contact.name}, {contact.title}
+							</h4>
+							<h5>{contact.phone_number}</h5>
+							<h5>{contact.email}</h5>
+							<p>{contact}</p>
+							{userInfo && userInfo.username === contact.owner && (
+								<div>
+									<Button variant='secondary'>Edit</Button>
+									<Button variant='danger'>Delete</Button>
+								</div>
+							)}{' '}
+							
+						</div>
+					);
+				})}*/}
 		</div>
 	);
 }
