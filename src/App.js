@@ -69,16 +69,20 @@ function App() {
 
 	return (
 		<div className='App'>
-			<Navbar
-				loggedIn={loggedIn}
-				handleLogout={handleLogout}
-				userInfo={userInfo}
-			/>
+			{loggedIn && (
+				<Navbar
+					loggedIn={loggedIn}
+					handleLogout={handleLogout}
+					userInfo={userInfo}
+				/>
+			)
+		}
 			<Routes>
 				<Route
 					path='/'
 					element={<Home userInfo={userInfo} loggedIn={loggedIn} />}
 				/>
+
 				<Route
 					path='/login'
 					element={

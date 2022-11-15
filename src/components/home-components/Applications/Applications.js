@@ -5,7 +5,11 @@ import SearchApps from '../SearchApps';
 import ApplicationCreate from './ApplicationCreate';
 import ApplicationDetails from './ApplicationDetails';
 
-function Applications({ loggedIn, userInfo, applications }) {
+function Applications({
+	loggedIn,
+	userInfo,
+	applications,
+	getApplications }) {
 	const [show, setShow] = useState(false);
 
 	// SORT OPTION STATE
@@ -18,7 +22,7 @@ function Applications({ loggedIn, userInfo, applications }) {
 	const [search, setSearch] = useState('');
 
 	// SEARCH INPUT
-	function handleSubmit(event) {
+	function handleSearchSubmit(event) {
 		event.preventDefault();
 		setSearch('');
 	}
@@ -102,8 +106,8 @@ function Applications({ loggedIn, userInfo, applications }) {
 
 	let newAppList = filteredApps.map((application) => {
 		return (
+		<Link to={`/applications/${application.id}`}>
 			<div className='card' key={application.id}>
-				<Link to={`/applications/${application.id}`}>
 					<div>
 						{application.job_title} @ {application.company_name}
 					</div>
@@ -111,19 +115,8 @@ function Applications({ loggedIn, userInfo, applications }) {
 					<div>Applied on: {application.date_applied}</div>
 
 					<br />
-				</Link>
 			</div>
-
-			//  <Link to={`contacts/${application.contacts[0].id}`}>
-			// 								Contact(s)
-			// 							</Link>
-			// 	<div className='card-footer text-muted'>
-			// 		Applied on: {application.date_applied}
-			// 	</div>
-			// 					<p>
-			// 							<Link to={`contacts/${application.contacts[0].id}`}>
-			// 								Contact(s)
-			// 							</Link>
+		</Link>
 		);
 	});
 
@@ -136,27 +129,13 @@ function Applications({ loggedIn, userInfo, applications }) {
 						setType={setType}
 						setSearch={setSearch}
 						search={search}
-						handleSubmit={handleSubmit}
+						handleSubmit={handleSearchSubmit}
 					/>
 
 					<div id='feed-main-div'>
 						<h2>My Feed</h2>
 						{/* *ADDED NEW APP LIST* */}
 						{newAppList}
-						{/* <Button onClick={() => setShow(true)}>New Application</Button>
-						<Modal show={show} onHide={() => setShow(false)}>
-							<Modal.Header>
-								<Modal.Title>New Application</Modal.Title>
-							</Modal.Header>
-							<Modal.Body>
-								<ApplicationCreate setShow={setShow} />
-							</Modal.Body>
-							<Modal.Footer>
-								<Button variant='secondary' onClick={() => setShow(false)}>
-									Close
-								</Button>
-							</Modal.Footer>
-						</Modal> */}
 						<hr />
 					</div>
 				</Container>
