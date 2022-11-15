@@ -52,7 +52,7 @@ function EditContactForm({
 						type='text'
 						name='notes'
 						onChange={handleChange}
-						valueAsDate={formValues.notes}
+						value={formValues.notes}
 					/>
 				</Form.Group>
 				<Form.Group controlId='status'>
