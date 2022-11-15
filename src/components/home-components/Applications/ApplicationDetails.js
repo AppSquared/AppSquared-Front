@@ -40,20 +40,43 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 
 	// console.log(`/contacts/${application.contacts[0].slice(-1)}`);
 	return (
-		<>
+		<div id='appDetails'>
 			<h2>
 				{application.job_title}@ {application.company_name} details
 			</h2>
-			<div>Current status: {application.status}</div>
-			<div>Applied on: {application.date_applied}</div>
-			<div>Created on: {application.date_logged}</div>
-			<div>Created by: {application.owner}</div>
+
+			<div className='appD2'>
+				<h5>
+					Current status: <em>{application.status}</em>
+				</h5>
+			</div>
+
+			<div className='appD2'>
+				<h5>
+					Applied on: <em>{application.date_applied}</em>
+				</h5>
+			</div>
+
+			<div className='appD2'>
+				<h5>
+					Created on: <em>{application.date_logged}</em>
+				</h5>
+			</div>
+
+			<div className='appD2'>
+				<h5>
+					Created by: <em>{application.owner}</em>
+				</h5>
+			</div>
+
 			{/* <Link to={`/contacts/${application.contacts[0].slice(-1)}`}>
 				Contact(s)
 			</Link> */}
-			<div>
-				<p>Notes:</p>
-				<p>{application.notes}</p>
+			<div className='notes'>
+				<h5>
+					<p>Notes:</p>
+					<p>{application.notes}</p>
+				</h5>
 			</div>
 
 			{userInfo && userInfo.username === application.owner && (
@@ -77,7 +100,7 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 					</Modal>
 				</>
 			)}
-		</>
+		</div>
 	);
 }
 

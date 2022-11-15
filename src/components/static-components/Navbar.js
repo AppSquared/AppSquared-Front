@@ -8,7 +8,11 @@ function Navbar({ loggedIn, handleLogout, userInfo }) {
 				<Link to='/'>App Squared</Link>
 			</h1>
 			<div className='navbar-links'>
-				{userInfo && <p>{userInfo.username}</p>}
+				{userInfo && (
+					<h4>
+						Welcome <em>{userInfo.username}</em>! 👋
+					</h4>
+				)}
 				{loggedIn ? (
 					<>
 						{/* <Link to='/users/me'>My Profile</Link> */}
@@ -16,7 +20,6 @@ function Navbar({ loggedIn, handleLogout, userInfo }) {
 							<Menu
 								pageWrapId={'page-wrap'}
 								outerContainerId={'outer-container'}
-								isOpen={false}
 								noOverlay
 								right>
 								<Link to='/' onClick={handleLogout}>
@@ -31,7 +34,6 @@ function Navbar({ loggedIn, handleLogout, userInfo }) {
 							<Menu
 								pageWrapId={'page-wrap'}
 								outerContainerId={'outer-container'}
-								isOpen={false}
 								noOverlay
 								right>
 								<Link to='/signup'>Sign Up</Link>

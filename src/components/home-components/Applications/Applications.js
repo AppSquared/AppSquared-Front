@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Button, Modal } from 'react-bootstrap';
 import SearchApps from '../SearchApps';
@@ -23,6 +23,10 @@ function Applications({ loggedIn, userInfo, applications }) {
 		setSearch('');
 	}
 
+	useEffect(() => {
+		setSearch('');
+	}, [type]);
+
 	// SWITCH CASE
 	switch (type) {
 		case 'Most Recent':
@@ -32,6 +36,11 @@ function Applications({ loggedIn, userInfo, applications }) {
 			filteredApps = descArr.sort(
 				(objA, objB) => Number(objA.date) - Number(objB.date)
 			);
+			if (search) {
+				filteredApps = applications.filter((application) => {
+					return application.notes.includes(search);
+				});
+			}
 			break;
 
 		case 'Oldest':
@@ -41,24 +50,44 @@ function Applications({ loggedIn, userInfo, applications }) {
 			filteredApps = ascArr.sort(
 				(objA, objB) => Number(objB.date) - Number(objA.date)
 			);
+			if (search) {
+				filteredApps = applications.filter((application) => {
+					return application.notes.includes(search);
+				});
+			}
 			break;
 
 		case 'Applied':
 			filteredApps = applications.filter(
 				(application) => application.status === 'Applied'
 			);
+			if (search) {
+				filteredApps = applications.filter((application) => {
+					return application.notes.includes(search);
+				});
+			}
 			break;
 
 		case 'Interviewed':
 			filteredApps = applications.filter(
 				(application) => application.status === 'Interviewed'
 			);
+			if (search) {
+				filteredApps = applications.filter((application) => {
+					return application.notes.includes(search);
+				});
+			}
 			break;
 
 		case 'Rejected':
 			filteredApps = applications.filter(
 				(application) => application.status === 'Rejected'
 			);
+			if (search) {
+				filteredApps = applications.filter((application) => {
+					return application.notes.includes(search);
+				});
+			}
 			break;
 
 		case 'Default':
@@ -129,29 +158,6 @@ function Applications({ loggedIn, userInfo, applications }) {
 							</Modal.Footer>
 						</Modal>
 						<hr />
-
-						{/* *DELETE*
-
-						{applications.map((application) => {
-							return (
-								<div key={application.id}>
-									<Link to={`/applications/${application.id}`}>
-										<div>
-											{application.job_title} @ {application.company_name}
-										</div>
-										<div>Current status: {application.status}</div>
-										<div>Applied on: {application.date_applied}</div>
-
-										<br />
-									</Link>
-									<p>
-										{/* <Link to={`contacts/${application.contacts[0].id}`}>
-											Contact(s)
-										</Link> */}
-						{/* </p>
-								</div>
-							);
-						})}  */}
 					</div>
 				</Container>
 			)}
