@@ -49,9 +49,6 @@ function App() {
 			});
 
 			if (response.status === 204) {
-				// console.log(loggedIn);
-				// console.log(userInfo);
-				// console.log(localStorage);
 				setLoggedIn(false);
 				setUserInfo(null);
 				localStorage.removeItem('token');

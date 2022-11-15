@@ -112,9 +112,9 @@ function Applications({ loggedIn, userInfo, applications }) {
 
 					<div id='feed-main-div'>
 						<h2>My Feed</h2>
-						<Button onClick={() => setShow(true)}>New Application</Button>
 						{/* *ADDED NEW APP LIST* */}
 						{newAppList}
+						{/* <Button onClick={() => setShow(true)}>New Application</Button>
 						<Modal show={show} onHide={() => setShow(false)}>
 							<Modal.Header>
 								<Modal.Title>New Application</Modal.Title>
@@ -127,7 +127,7 @@ function Applications({ loggedIn, userInfo, applications }) {
 									Close
 								</Button>
 							</Modal.Footer>
-						</Modal>
+						</Modal> */}
 						<hr />
 
 						{/* *DELETE*

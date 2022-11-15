@@ -37,10 +37,10 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 	if (!application) {
 		return null;
 	}
-
-	// console.log(`/contacts/${application.contacts[0].slice(-1)}`);
+	// const contactLink = application.contacts[0].slice(-1);
 	return (
 		<>
+			{/* {userInfo && userInfo.username === application.owner && ( */}
 			<h2>
 				{application.job_title}@ {application.company_name} details
 			</h2>
@@ -48,35 +48,32 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 			<div>Applied on: {application.date_applied}</div>
 			<div>Created on: {application.date_logged}</div>
 			<div>Created by: {application.owner}</div>
-			{/* <Link to={`/contacts/${application.contacts[0].slice(-1)}`}>
-				Contact(s)
-			</Link> */}
+			{/* <Link to={`/contacts/${contactLink}`}>Contact(s)</Link> */}
 			<div>
 				<p>Notes:</p>
 				<p>{application.notes}</p>
 			</div>
 
-			{userInfo && userInfo.username === application.owner && (
-				<>
-					<Button onClick={() => setShow(true)}>Edit</Button>
-					<Modal show={show} onHide={() => setShow(false)}>
-						<Modal.Header>
-							<Modal.Title>Edit Application</Modal.Title>
-						</Modal.Header>
-						<Modal.Body>
-							<ApplicationEdit setShow={setShow} handleDelete={handleDelete} />
-						</Modal.Body>
-						<Modal.Footer>
-							<Button onClick={handleDelete} variant='danger'>
-								Delete
-							</Button>
-							<Button variant='secondary' onClick={() => setShow(false)}>
-								Close
-							</Button>
-						</Modal.Footer>
-					</Modal>
-				</>
-			)}
+			<>
+				<Button onClick={() => setShow(true)}>Edit</Button>
+				<Modal show={show} onHide={() => setShow(false)}>
+					<Modal.Header>
+						<Modal.Title>Edit Application</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<ApplicationEdit setShow={setShow} handleDelete={handleDelete} />
+					</Modal.Body>
+					<Modal.Footer>
+						<Button onClick={handleDelete} variant='danger'>
+							Delete
+						</Button>
+						<Button variant='secondary' onClick={() => setShow(false)}>
+							Close
+						</Button>
+					</Modal.Footer>
+				</Modal>
+			</>
+			{/* )} */}
 		</>
 	);
 }

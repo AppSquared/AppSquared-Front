@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import Applications from './Applications/Applications';
 import { Link } from 'react-router-dom';
 import API_URL from '../../apiConfig';
+import { Button, Modal } from 'react-bootstrap';
+import ApplicationCreate from './Applications/ApplicationCreate';
 
 function Home({ loggedIn, userInfo }) {
 	// const navigate = useNavigate();
 	const [applications, setApplications] = useState([]);
 	const [error, setError] = useState(false);
+	const [show, setShow] = useState(false);
 
 	const getApplications = async () => {
 		try {
@@ -33,6 +36,20 @@ function Home({ loggedIn, userInfo }) {
 
 	return (
 		<>
+			<Button onClick={() => setShow(true)}>New Application</Button>
+			<Modal show={show} onHide={() => setShow(false)}>
+				<Modal.Header>
+					<Modal.Title>New Application</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<ApplicationCreate setShow={setShow} />
+				</Modal.Body>
+				<Modal.Footer>
+					<Button variant='secondary' onClick={() => setShow(false)}>
+						Close
+					</Button>
+				</Modal.Footer>
+			</Modal>
 			{{ loggedIn } ? (
 				<div>
 					<hr></hr>
