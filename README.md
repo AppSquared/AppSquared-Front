@@ -56,6 +56,7 @@ Unsolved Problems:
 - We will revisit and add To-do functionality and have a usable daily companion module
 - Add daily motivational quotes (3rd Party API)
 - The contact model is not fully navigable at deploy, but the work for it has begun.
+- Triggering dynamic re-rendering
 
 Major Hurdles:
 
