@@ -27,7 +27,7 @@ App Squared is a Job Application tracking app, where users input information abo
 
 # Installation instructions
 
-- Go to the website: https://app-squared.netlify.app/login
+- Go to the website: https://app-squared.netlify.app/
 - Click on the Menu and Sign Up (If you've signed up already, Click on Log In)
 - Input your info and Log In
 - On Applications page you can add/edit your application
@@ -55,8 +55,11 @@ Unsolved Problems:
 
 - We will revisit and add To-do functionality and have a usable daily companion module
 - Add daily motivational quotes (3rd Party API)
+- The contact model is not fully navigable at deploy, but the work for it has begun.
 
 Major Hurdles:
 
-- Heroku Deployment Issues
 - React FrontEnd w/ Django backend
+- Restructuring from planning stage/ changing the approach
+- Scheduling issues
+- Compartmentalization of tasks
