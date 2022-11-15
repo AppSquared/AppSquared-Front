@@ -37,8 +37,7 @@ function ApplicationDetails({ userInfo, loggedIn }) {
 	if (!application) {
 		return null;
 	}
-
-	// console.log(`/contacts/${application.contacts[0].slice(-1)}`);
+	// const contactLink = application.contacts[0].slice(-1);
 	return (
 		<div id='appDetails'>
 			<h2>

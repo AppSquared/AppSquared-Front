@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import NewApplicationForm from './Forms/NewApplicationForm';
+import { navigate, useNavigate } from 'react-router-dom';
+import ApplicationForm from './ApplicationForm';
 import API_URL from '../../../apiConfig';
 
 function ApplicationCreate({ setShow }) {
@@ -44,7 +44,7 @@ function ApplicationCreate({ setShow }) {
 
 	return (
 		<div>
-			<NewApplicationForm
+			<ApplicationForm
 				setShow={setShow}
 				handleSubmit={createApplication}
 				handleChange={handleChange}
