@@ -3,10 +3,7 @@ import { navigate, useNavigate } from 'react-router-dom';
 import ApplicationForm from './ApplicationForm';
 import API_URL from '../../../apiConfig';
 
-function ApplicationCreate({
-	setCreatedApp,
-	setShow,
-	getApplications }) {
+function ApplicationCreate({ setCreatedApp, setShow, getApplications }) {
 	const initialApplicationValues = {
 		job_title: '',
 		company_name: '',
@@ -38,11 +35,9 @@ function ApplicationCreate({
 				},
 			});
 			if (response.status === 201) {
-				// window.location = '/';
-				// navigate('/');
-				setCreatedApp(true)
+				setCreatedApp(true);
 				getApplications();
-				setCreatedApp(false)
+				setCreatedApp(false);
 			}
 		} catch (err) {
 			return;
