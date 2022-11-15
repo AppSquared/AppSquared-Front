@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
+import Signup from './Signup.js';
 import API_URL from '../../../apiConfig';
 
 function Login({ handleSetLoggedIn }) {
@@ -76,6 +77,10 @@ function Login({ handleSetLoggedIn }) {
 					Log In
 				</Button>
 			</Form>
+			<div>Ready to start the job-hunt?</div>
+			<Link to='/signup' element={<Signup />}>
+				<div>Click here to signup!</div>
+			</Link>
 			{error && (
 				<Alert variant='warning'>
 					User or password not found. Try again or{' '}
