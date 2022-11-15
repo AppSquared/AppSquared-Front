@@ -33,7 +33,7 @@ function SearchApps({ setType, setSearch, search, handleSubmit }) {
 				</Form.Group>
 			</Form>
 
-			<Form id='search-form' className="" onSubmit={handleSubmit}>
+			<Form id='search-form' className='' onSubmit={handleSubmit}>
 				<Form.Label>Search Applications</Form.Label>
 				<div id='form-input-button'>
 					<Form.Control
@@ -44,7 +44,7 @@ function SearchApps({ setType, setSearch, search, handleSubmit }) {
 						onChange={(event) => setSearch(event.target.value)}
 						value={search}
 						required={true}
-						placeholder='Type to Refine Your Search'
+						placeholder='Refine Your Feed'
 					/>
 				</div>
 				{/* </Link> */}

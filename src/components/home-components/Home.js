@@ -41,7 +41,34 @@ function Home({ loggedIn, userInfo }) {
 	});
 
 	if (!error && !applications.length) {
-		return <div>No applications found.</div>;
+		return (
+			<>
+				<h4>Hmm. We didn't find any applications for you... </h4>
+				<h4>Try the button below to add a new one!</h4>
+				<Button onClick={() => setShow(true)}>New Application</Button>
+				<Modal show={show} onHide={() => setShow(false)}>
+					<Modal.Header>
+						<Modal.Title>New Application</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<ApplicationCreate setShow={setShow} />
+					</Modal.Body>
+					<Modal.Footer>
+						<Button variant='secondary' onClick={() => setShow(false)}>
+							Close
+						</Button>
+					</Modal.Footer>
+				</Modal>
+				<div>
+					<hr></hr>
+					<Applications
+						applications={applications}
+						userInfo={userInfo}
+						loggedIn={loggedIn}
+					/>
+				</div>
+			</>
+		);
 	}
 
 	function renderApplications() {
